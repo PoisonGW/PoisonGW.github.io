@@ -29,10 +29,11 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#email-feature">3.1. Email feature</a></li>
+<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -586,9 +587,44 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/Redo feature</a></h3>
+<h3 id="email-feature"><a class="link" href="#email-feature">3.1. Email feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<h4 id="current-implementation-emailing-a-single-student"><a class="link" href="#current-implementation-emailing-a-single-student">3.1.1. Current implementation - Emailing a single student</a></h4>
+<div class="paragraph">
+<p>The email feature is faciliated by Outlook Mail API, since most NUS teaching assistants have an Outlook account. The Outlook mail interface appears in the browserpanel, and is activated when the email command is typed, instead of when a personcard is clicked. The email command itself takes in an index as a parameter (e.g email 2), and fetches the email address of the student at that index. It then opens up the Outlook UI, with the email address of the student in the 'to:' section. The CommandResult object that is returned by the email command lets the user know if the email address has been successfully added to the the 'to:' field. The email subject and content is also entered throuhg the CLI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="using-outlook-s-mail-api"><a class="link" href="#using-outlook-s-mail-api">3.1.2. Using Outlook&#8217;s Mail API</a></h4>
+<div class="paragraph">
+<p>This API is a RESTful API, made for server-client communication.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/REST%20api.png" alt="REST api" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Using the 'POST' request (which requests that the web server accepts the data enclosed in the body of the request message), the users email content/subject is converted to JSON format and forms the body of the email.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-features-implementations-emailing-an-entire-class-group"><a class="link" href="#future-features-implementations-emailing-an-entire-class-group">3.1.3. Future features/implementations - Emailing an entire class/group</a></h4>
+<div class="paragraph">
+<p>Use the 'select' feature to select an entire class, based on the tag that each student has of which class they are in. After selecting, the email command would extract all of their emails and open up the Outlook UI, with the email addressess of the students in the 'to:' section. (e.g 'select tutgroup4', 'email')</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="alternative-implementations"><a class="link" href="#alternative-implementations">3.1.4. Alternative implementations:</a></h4>
+<div class="paragraph">
+<p>Since the outlook mail API is being used, the only alternatives in implementation come about in the extracting of emails from the person object, and the shifting of the user input for the subject/content from the CLI to appear in the empty 'compose mail' box.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -718,7 +754,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -788,20 +824,20 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -832,7 +868,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2662,4 +2698,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 15:04:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 15:36:44 UTC</div></div></div></body></html>
