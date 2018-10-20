@@ -680,6 +680,24 @@ Furthermore, the schedule command ensures that all the fields specified must be 
 <p>The GUI itself will have a calendar component which will display the user&#8217;s current list of events that they have
 scheduled, while adjusting for the current date.</p>
 </div>
+<div class="paragraph">
+<p>The sequence diagram below shows how the components interact for the scenario where the user issues the command <code>schedule EVENT</code>, where <code>EVENT</code> is the event as specified by the input parameters.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleEventSequenceDiagram.png" alt="ScheduleEventSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 10. Component interactions for <code>delete EVENT</code> command (part 1)</div>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the EventsCenter reacts to the CalendarChangedEvent, which also results in updates to the storage and the UI.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EventStorageSequenceDiagram.png" alt="EventStorageSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 11. Component interactions for <code>delete EVENT</code> command (part 2)</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
@@ -1073,7 +1091,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 12. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2837,4 +2855,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-18 14:08:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-20 03:53:50 UTC</div></div></div></body></html>
