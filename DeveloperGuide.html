@@ -574,33 +574,51 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="sect3">
 <h4 id="current-implementation-emailing-a-single-student"><a class="link" href="#current-implementation-emailing-a-single-student">3.1.1. Current implementation - Emailing a single student</a></h4>
 <div class="paragraph">
-<p>The email feature is faciliated by Outlook Mail API, since most NUS teaching assistants have an Outlook account. The Outlook mail interface appears in the browserpanel, and is activated when the email command is typed, instead of when a personcard is clicked. The email command itself takes in an index as a parameter (e.g email 2), and fetches the email address of the student at that index. It then opens up the Outlook UI, with the email address of the student in the 'to:' section. The CommandResult object that is returned by the email command lets the user know if the email address has been successfully added to the the 'to:' field. The email subject and content is also entered throuhg the CLI.</p>
+<p>The email feature is faciliated by Outlook Mail API, since most NUS teaching assistants have an Outlook account. This API is a RESTful API, made for server-client communication. Since the Outlook mail API is a RESTful API, this feature uses the 'POST' request (which requests that the web server accepts the data enclosed in the body of the request message) to send the email specified in the user-input to the student specified in the user-input.
+The email command itself takes a few parameters:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Index</code>: Index number of student in list. Only positive numbers present in list are valid.(<code>i/</code>)</p>
+</li>
+<li>
+<p><code>Subject</code>: Subject of email to be sent, valid if not an empty string.(<code>s/</code>)</p>
+</li>
+<li>
+<p><code>Body</code>: Subject of email to be sent, valid if not an empty string.(<code>b/</code>)</p>
+</li>
+</ul>
 </div>
-<div class="sect3">
-<h4 id="using-outlook-s-mail-api"><a class="link" href="#using-outlook-s-mail-api">3.1.2. Using Outlook&#8217;s Mail API</a></h4>
 <div class="paragraph">
-<p>This API is a RESTful API, made for server-client communication.</p>
+<p>e.g <code>email i/2 s/Attendance poor. b/Your attendance seems to be poor. Is there a problem?</code></p>
+</div>
+<div class="paragraph">
+<p>When the user inputs the email in the CLI, the app fetches the email address of the student <code>index</code> specified and the subject and body of the email specified. This is converted to JSON, and passed as the <code>body</code> of the 'POST' request to Outlook.</p>
+</div>
+<div class="paragraph">
+<p>The <code>CommandResult</code> object that is returned by the email command lets the user know if the email address has been successfully send to the person whose index is specified.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/REST%20api.png" alt="REST api" width="800">
+<img src="images/EmailCommand%20Sequence%20Diagram.png" alt="EmailCommand Sequence Diagram" width="800">
 </div>
+<div class="title">Figure 10. Component interactions for email command</div>
 </div>
 <div class="paragraph">
-<p>Using the 'POST' request (which requests that the web server accepts the data enclosed in the body of the request message), the users email content/subject is converted to JSON format and forms the body of the email.</p>
+<p>In the 'POST' request, a access token is required in order to be able to communicate to the web server, which is <code>Outlook</code> in this case. To get this access token from Outlook, a authorization code must be used, which is also provided when applicatoin is registered and authorized under Outlook. Only with this access token, can the email that is created be sent to Outlook as a 'POST' request.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UML%20REST%20API.png" alt="UML REST API" width="400">
+</div>
+<div class="title">Figure 11. App interactions with Outlook for email command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-features-implementations-emailing-an-entire-class-group"><a class="link" href="#future-features-implementations-emailing-an-entire-class-group">3.1.3. Future features/implementations - Emailing an entire class/group</a></h4>
+<h4 id="alternative-implementations"><a class="link" href="#alternative-implementations">3.1.2. Alternative implementations:</a></h4>
 <div class="paragraph">
-<p>Use the 'select' feature to select an entire class, based on the tag that each student has of which class they are in. After selecting, the email command would extract all of their emails and open up the Outlook UI, with the email addressess of the students in the 'to:' section. (e.g 'select tutgroup4', 'email')</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="alternative-implementations"><a class="link" href="#alternative-implementations">3.1.4. Alternative implementations:</a></h4>
-<div class="paragraph">
-<p>Since the outlook mail API is being used, the only alternatives in implementation come about in the extracting of emails from the person object, and the shifting of the user input for the subject/content from the CLI to appear in the empty 'compose mail' box.</p>
+<p>Including UI features to make Outlook&#8217;s mail drafting screen appear in the <code>Browser Panel</code>, and requiring the user to input the index of student to email, the subject, and the body as three seperate inputs instead of one.</p>
 </div>
 </div>
 </div>
@@ -673,7 +691,7 @@ scheduled, while adjusting for the current date.</p>
 <div class="content">
 <img src="images/ScheduleEventSequenceDiagram.png" alt="ScheduleEventSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 10. Component interactions for <code>delete EVENT</code> command (part 1)</div>
+<div class="title">Figure 12. Component interactions for <code>delete EVENT</code> command (part 1)</div>
 </div>
 <div class="paragraph">
 <p>The diagram below shows how the EventsCenter reacts to the CalendarChangedEvent, which also results in updates to the storage and the UI.</p>
@@ -682,7 +700,7 @@ scheduled, while adjusting for the current date.</p>
 <div class="content">
 <img src="images/EventStorageSequenceDiagram.png" alt="EventStorageSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 11. Component interactions for <code>delete EVENT</code> command (part 2)</div>
+<div class="title">Figure 13. Component interactions for <code>delete EVENT</code> command (part 2)</div>
 </div>
 <div class="paragraph">
 <p>The diagram below shows how the schedule command is parsed in the Logic component. Here again, <code>EVENT</code> is the event as specified by the input parameters.</p>
@@ -691,7 +709,7 @@ scheduled, while adjusting for the current date.</p>
 <div class="content">
 <img src="images/ScheduleEventSdForLogic.png" alt="ScheduleEventSdForLogic" width="800">
 </div>
-<div class="title">Figure 12. Logic diagram for <code>schedule EVENT</code> command</div>
+<div class="title">Figure 14. Logic diagram for <code>schedule EVENT</code> command</div>
 </div>
 </div>
 <div class="sect3">
@@ -893,7 +911,7 @@ Furthermore, the attendance command ensures that all the fields specified must b
 <div class="content">
 <img src="images/attendance_diagram.png" alt="attendance diagram" width="800">
 </div>
-<div class="title">Figure 13. Component interactions for <code>attendance</code> command</div>
+<div class="title">Figure 15. Component interactions for <code>attendance</code> command</div>
 </div>
 </div>
 </div>
@@ -1102,43 +1120,101 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="sect2">
 <h3 id="mark-feature"><a class="link" href="#mark-feature">3.5. Mark feature</a></h3>
 <div class="sect3">
-<h4 id="planned-implementation"><a class="link" href="#planned-implementation">3.5.1. Planned Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.5.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The mark feature will be implemented as a utility class <code>Mark</code>. It will store a series of lists of <code>Person</code>, accessible by name and/or index. The user will be able to run batch commands on marked targets.</p>
+<p>The mark feature will be implemented as a utility class <code>Mark</code>. It will store a list of <code>Person</code>. The user will be able to run batch commands on marked targets.</p>
 </div>
+<div class="paragraph">
+<p>The feature is exposed as a command with the following patterns:</p>
 </div>
-<div class="sect3">
-<h4 id="constructors"><a class="link" href="#constructors">3.5.2. Constructors:</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Mark(List&lt;Person&gt; inputList, [String listName])</code>&#8201;&#8212;&#8201;marks the Persons in inputList under listName</p>
+<p><code>mark [m1] subcommand [m2] [m3]</code>&#8201;&#8212;&#8201;for mark subcommands</p>
 </li>
 <li>
-<p><code>Mark(Tag tag, [String listName])</code>&#8201;&#8212;&#8201;marks the Persons that match the tag under listName</p>
-</li>
-<li>
-<p><code>Mark(Predicate&lt;Person&gt; predicate, [String listName])</code>&#8201;&#8212;&#8201;marks all Persons that match the supplied predicate under listName
-==== Methods:</p>
-</li>
-<li>
-<p><code>Mark#getList([String listName])</code>&#8201;&#8212;&#8201;returns a list of Persons marked under listName</p>
-</li>
-<li>
-<p><code>Mark#union(Mark)</code>&#8201;&#8212;&#8201;returns a new Mark that contains the union of the two Marks</p>
-</li>
-<li>
-<p><code>Mark#intersect(Mark)</code>&#8201;&#8212;&#8201;returns a new Mark that contains the intersection of the two Marks</p>
-</li>
-<li>
-<p><code>Mark#execute(Consumer&lt;Person&gt;)</code>&#8201;&#8212;&#8201;applies the Consumer function on all Persons in the Mark (how to resolve multiple CommandResult)?</p>
+<p><code>mark [m1] exec commandname [args]</code>&#8201;&#8212;&#8201;for commands implementing IMarkExecutable</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The Marks will be managed by <code>MarkManager</code>, which stores the named Marks and is responsible for managing them and calling methods from functions.
-==== Design Considerations
-The mark feature needs to be versatile yet robust.</p>
+<p>The command is parsed under <code>MarkCommandParser</code>, which then returns the appropriate <code>MarkSubCommand</code> to be executed. It is designed in this way to be easily extensible in the future.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="use-case"><a class="link" href="#use-case">3.5.2. Use Case:</a></h4>
+<div class="paragraph">
+<p>Suppose a tutor wants to mark the attendance of all students from tutorial groups W13-3 and W13-4. Instead of manually typing <code>attendance index attd/1</code> manually for all the students, the tutor can use the mark feature:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>mark m/a find t/W13-3</code>&#8201;&#8212;&#8201;marks Persons with tag "W13-3" under alias "a"</p>
+</li>
+<li>
+<p><code>mark m/b find t/W13-4</code>&#8201;&#8212;&#8201;marks Persons with tag "W13-4" under alias "b"</p>
+</li>
+<li>
+<p><code>mark m/res join m/a m/b</code>&#8201;&#8212;&#8201;joins marks a and b and puts result under "res"</p>
+</li>
+<li>
+<p><code>mark m/res exec attd 1</code>&#8201;&#8212;&#8201;executes command(attd) with args(1) on "res"</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Suppose the tutor then wants to send an email to the aforementioned group of students. They can do that with a simple command: <code>mark m/res exec email [emailText]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sub-commands"><a class="link" href="#sub-commands">3.5.3. Sub-commands</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find [name|tag]</code>&#8201;&#8212;&#8201;marks Persons matched by find command</p>
+</li>
+<li>
+<p><code>join m1 m2</code>&#8201;&#8212;&#8201;returns union of m1 and m2</p>
+</li>
+<li>
+<p><code>and m1 m2</code>&#8201;&#8212;&#8201;returns intersection of m1 and m2</p>
+</li>
+<li>
+<p><code>show</code>&#8201;&#8212;&#8201;shows marked Persons in GUI</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="planned-sub-commands-1-4"><a class="link" href="#planned-sub-commands-1-4">3.5.4. Planned Sub-commands (1.4)</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tag [tagName]</code>&#8201;&#8212;&#8201;tags marked Persons with tagName</p>
+</li>
+<li>
+<p><code>attd [0|1]</code>&#8201;&#8212;&#8201;marks attendance of marked Persons</p>
+</li>
+<li>
+<p><code>email [emailText]</code>&#8201;&#8212;&#8201;sends email to marked Persons</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="interface"><a class="link" href="#interface">3.5.5. Interface</a></h4>
+<div class="paragraph">
+<p>Commands can implement an interface <code>IMarkExecutable</code> with the following method</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>executeMark(Mark m, String[] args)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Marks are stored under <code>ModelManager</code>, which stores a HashMap of Marks and is responsible for managing them (read/write).</p>
 </div>
 </div>
 </div>
@@ -1253,7 +1329,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 14. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 16. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2289,4 +2365,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 11:48:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 12:13:46 UTC</div></div></div></body></html>
