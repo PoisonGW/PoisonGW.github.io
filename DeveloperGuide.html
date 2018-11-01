@@ -68,7 +68,7 @@
 </li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#use-cases-2">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
@@ -1119,65 +1119,47 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="sect2">
 <h3 id="mark-feature"><a class="link" href="#mark-feature">3.5. Mark feature</a></h3>
+<div class="paragraph">
+<p>Marks allow tutors to manage groups of students easily without typing a command multiple times for each student in the class.
+It is designed to work well with the existing <code>Tag</code> system, and designed with commands such as <code>attendance</code> and <code>email</code> in mind.
+It is session based, meaning that groups are not stored in the data files after the app has closed, and is not intended as a replacement for <code>Tag</code>.</p>
+</div>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.5.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The mark feature will be implemented as a utility class <code>Mark</code>. It will store a list of <code>Person</code>. The user will be able to run batch commands on marked targets.</p>
+<p><code>Mark</code> is a container class which stores a <code>Set&lt;Person&gt;</code> and exposes getter and setter methods, as well as methods for union and intersection of <code>Marks</code>.</p>
 </div>
 <div class="paragraph">
-<p>The feature is exposed as a command with the following patterns:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>mark [m1] subcommand [m2] [m3]</code>&#8201;&#8212;&#8201;for mark subcommands</p>
-</li>
-<li>
-<p><code>mark [m1] exec commandname [args]</code>&#8201;&#8212;&#8201;for commands implementing IMarkExecutable</p>
-</li>
-</ul>
+<p>Marks are maintained by <code>ModelManager</code>, which is responsible for updating, storing and providing the correct <code>Mark</code> for commands.</p>
 </div>
 <div class="paragraph">
-<p>The command is parsed under <code>MarkCommandParser</code>, which then returns the appropriate <code>MarkSubCommand</code> to be executed. It is designed in this way to be easily extensible in the future.</p>
+<p>Commands relating to the creation and manipulations of Marks are parsed by <code>MarkCommandParser</code>, which then returns the appropriate <code>MarkSubCommand</code> to be executed.
+It is designed in this way to be easily extensible in the future as more sub-commands are added.</p>
+</div>
+<div class="paragraph">
+<p>The commands adhere to the following pattern:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mark [m/m1] &lt;subcommand&gt; [m/m2] [m/m3]`</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The arguments <code>m/m1</code>, <code>m/m2</code>, <code>m/m3</code> may be optional in some cases and default to <code>Mark.DEFAULT_NAME</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="use-case"><a class="link" href="#use-case">3.5.2. Use Case:</a></h4>
-<div class="paragraph">
-<p>Suppose a tutor wants to mark the attendance of all students from tutorial groups W13-3 and W13-4. Instead of manually typing <code>attendance index attd/1</code> manually for all the students, the tutor can use the mark feature:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>mark m/a find t/W13-3</code>&#8201;&#8212;&#8201;marks Persons with tag "W13-3" under alias "a"</p>
-</li>
-<li>
-<p><code>mark m/b find t/W13-4</code>&#8201;&#8212;&#8201;marks Persons with tag "W13-4" under alias "b"</p>
-</li>
-<li>
-<p><code>mark m/res join m/a m/b</code>&#8201;&#8212;&#8201;joins marks a and b and puts result under "res"</p>
-</li>
-<li>
-<p><code>mark m/res exec attd 1</code>&#8201;&#8212;&#8201;executes command(attd) with args(1) on "res"</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Suppose the tutor then wants to send an email to the aforementioned group of students. They can do that with a simple command: <code>mark m/res exec email [emailText]</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="sub-commands"><a class="link" href="#sub-commands">3.5.3. Sub-commands</a></h4>
+<h4 id="sub-commands"><a class="link" href="#sub-commands">3.5.2. Sub-commands</a></h4>
 <div class="ulist">
 <ul>
 <li>
 <p><code>find [name|tag]</code>&#8201;&#8212;&#8201;marks Persons matched by find command</p>
 </li>
 <li>
-<p><code>join m1 m2</code>&#8201;&#8212;&#8201;returns union of m1 and m2</p>
+<p><code>join m/m2 [m/m3]</code>&#8201;&#8212;&#8201;returns union of m2 and m3</p>
 </li>
 <li>
-<p><code>and m1 m2</code>&#8201;&#8212;&#8201;returns intersection of m1 and m2</p>
+<p><code>and m/m2 [m/m3]</code>&#8201;&#8212;&#8201;returns intersection of m2 and m3</p>
 </li>
 <li>
 <p><code>show</code>&#8201;&#8212;&#8201;shows marked Persons in GUI</p>
@@ -1186,7 +1168,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="planned-sub-commands-1-4"><a class="link" href="#planned-sub-commands-1-4">3.5.4. Planned Sub-commands (1.4)</a></h4>
+<h4 id="planned-sub-commands-1-4"><a class="link" href="#planned-sub-commands-1-4">3.5.3. Planned Sub-commands (1.4)</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1202,20 +1184,51 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="interface"><a class="link" href="#interface">3.5.5. Interface</a></h4>
+<h4 id="use-cases"><a class="link" href="#use-cases">3.5.4. Use Cases:</a></h4>
 <div class="paragraph">
-<p>Commands can implement an interface <code>IMarkExecutable</code> with the following method</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>executeMark(Mark m, String[] args)</code></p>
-</li>
-</ul>
+<p>Suppose a tutor wants to mark the attendance of all students from tutorial groups W13 and W14.</p>
 </div>
 <div class="paragraph">
-<p>Marks are stored under <code>ModelManager</code>, which stores a HashMap of Marks and is responsible for managing them (read/write).</p>
+<p>Instead of:</p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>find t/W13
+attendance 1 at/Present
+attendance 2 at/Present
+attendance 3 at/Present
+...
+find t/W14
+attendance 1 at/Present
+attendance 2 at/Present
+attendance 3 at/Present
+...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The tutor can type in:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mark m/a find t/W13` // adds students tagged with "W13" to mark m/a
+mark m/b find t/W14` // adds students tagged with "W14" to mark m/b
+mark m/res join m/a m/b` // merges students in m/a and m/b to mark m/res
+attendance m/res at/Present` // updates the marked students' attendance</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Suppose the tutor then wants to send an email to the aforementioned group of students.
+They can do that with a simple command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>email m/res b/[emailText]</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.5. Design considerations</a></h4>
+
 </div>
 </div>
 <div class="sect2">
@@ -1766,7 +1779,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
+<h2 id="use-cases-2"><a class="link" href="#use-cases-2">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>ConTAct</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
@@ -2365,4 +2378,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 15:39:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 16:05:16 UTC</div></div></div></body></html>
