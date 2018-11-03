@@ -75,7 +75,7 @@
 <li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
+<li><a href="#deleting-a-student">G.2. Deleting a student</a></li>
 <li><a href="#saving-data">G.3. Saving data</a></li>
 </ul>
 </li>
@@ -433,7 +433,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StudentListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -476,7 +476,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person) and/or raise events.</p>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a student) and/or raise events.</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -519,7 +519,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>stores the Calendar data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Student&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -597,7 +597,7 @@ The email command itself takes a few parameters:</p>
 <p>When the user inputs the email in the CLI, the app fetches the email address of the student <code>index</code> specified and the subject and body of the email specified. This is converted to JSON, and passed as the <code>body</code> of the 'POST' request to Outlook.</p>
 </div>
 <div class="paragraph">
-<p>The <code>CommandResult</code> object that is returned by the email command lets the user know if the email address has been successfully send to the person whose index is specified.</p>
+<p>The <code>CommandResult</code> object that is returned by the email command lets the user know if the email address has been successfully send to the student whose index is specified.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -674,7 +674,7 @@ under the models component.</p>
 <p><code>schedule event/Office Christmas Party date/23-12-2018 start/18:00 end/20:00 descr/Party at Scranton Branch</code></p>
 </div>
 <div class="paragraph">
-<p>This will simply create an event with the specified fields and store it similar to how the addressbook stores a person.
+<p>This will simply create an event with the specified fields and store it similar to how the addressbook stores a student.
 Furthermore, the schedule command ensures that all the fields specified must be valid for it to be a success.</p>
 </div>
 <div class="paragraph">
@@ -901,7 +901,7 @@ constructor which takes in different parameters.</p>
 <p><code>attendance 1 at/present</code></p>
 </div>
 <div class="paragraph">
-<p>This will simply specify the attendance field of the Person with the specified attendance and store it similar to how the addressbook stores a person.
+<p>This will simply specify the attendance field of the Student with the specified attendance and store it similar to how the addressbook stores a student.
 Furthermore, the attendance command ensures that all the fields specified must be valid for it to be a success.</p>
 </div>
 <div class="paragraph">
@@ -952,7 +952,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th student in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -960,7 +960,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new student. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -980,7 +980,7 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the student was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1071,7 +1071,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the student being deleted).</p>
 </li>
 <li>
 <p>Cons: We must ensure that the implementation of each individual command are correct.</p>
@@ -1127,7 +1127,7 @@ It is session based, meaning that groups are not stored in the data files after 
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.5.1. Implementation</a></h4>
 <div class="paragraph">
-<p><code>Mark</code> is a container class which stores a <code>Set&lt;Person&gt;</code> and exposes getter and setter methods, as well as methods for union and intersection of <code>Marks</code>.</p>
+<p><code>Mark</code> is a container class which stores a <code>Set&lt;Student&gt;</code> and exposes getter and setter methods, as well as methods for union and intersection of <code>Marks</code>.</p>
 </div>
 <div class="paragraph">
 <p>Marks are maintained by <code>ModelManager</code>, which is responsible for updating, storing and providing the correct <code>Mark</code> for commands.</p>
@@ -1153,7 +1153,7 @@ It is designed in this way to be easily extensible in the future as more sub-com
 <div class="ulist">
 <ul>
 <li>
-<p><code>find [name|tag]</code>&#8201;&#8212;&#8201;marks Persons matched by find command</p>
+<p><code>find [name|tag]</code>&#8201;&#8212;&#8201;marks Students matched by find command</p>
 </li>
 <li>
 <p><code>join m/m2 [m/m3]</code>&#8201;&#8212;&#8201;returns union of m2 and m3</p>
@@ -1162,7 +1162,7 @@ It is designed in this way to be easily extensible in the future as more sub-com
 <p><code>and m/m2 [m/m3]</code>&#8201;&#8212;&#8201;returns intersection of m2 and m3</p>
 </li>
 <li>
-<p><code>show</code>&#8201;&#8212;&#8201;shows marked Persons in GUI</p>
+<p><code>show</code>&#8201;&#8212;&#8201;shows marked Students in GUI</p>
 </li>
 </ul>
 </div>
@@ -1172,13 +1172,13 @@ It is designed in this way to be easily extensible in the future as more sub-com
 <div class="ulist">
 <ul>
 <li>
-<p><code>tag [tagName]</code>&#8201;&#8212;&#8201;tags marked Persons with tagName</p>
+<p><code>tag [tagName]</code>&#8201;&#8212;&#8201;tags marked Students with tagName</p>
 </li>
 <li>
-<p><code>attd [0|1]</code>&#8201;&#8212;&#8201;marks attendance of marked Persons</p>
+<p><code>attd [0|1]</code>&#8201;&#8212;&#8201;marks attendance of marked Students</p>
 </li>
 <li>
-<p><code>email [emailText]</code>&#8201;&#8212;&#8201;sends email to marked Persons</p>
+<p><code>email [emailText]</code>&#8201;&#8212;&#8201;sends email to marked Students</p>
 </li>
 </ul>
 </div>
@@ -1794,7 +1794,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <p>User requests to add a student with specified details</p>
 </li>
 <li>
-<p>ConTAct adds the person into the system</p>
+<p>ConTAct adds the student into the system</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1831,7 +1831,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <p>User requests to a list of students matching an input string</p>
 </li>
 <li>
-<p>ConTAct shows a list of persons</p>
+<p>ConTAct shows a list of students</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1868,7 +1868,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <p>User requests to add a student with specified details</p>
 </li>
 <li>
-<p>ConTAct adds the person into the system</p>
+<p>ConTAct adds the student into the system</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2203,7 +2203,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
@@ -2326,15 +2326,15 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
+<h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">G.2. Deleting a student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Deleting a student while all students are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites: List all students using the <code>list</code> command. Multiple students in the list.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
@@ -2342,7 +2342,7 @@ Expected: First contact is deleted from the list. Details of the deleted contact
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
 <p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
@@ -2378,4 +2378,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 16:59:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-03 06:46:28 UTC</div></div></div></body></html>
