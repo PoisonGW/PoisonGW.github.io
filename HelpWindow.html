@@ -19,8 +19,8 @@
 <li><a href="#editing-a-student-code-edit-code">3.4. Editing a student : <code>edit</code></a></li>
 <li><a href="#sorting-students-code-sort-code">3.5. Sorting students: <code>sort</code></a></li>
 <li><a href="#marking-attendance-code-attendance-code">3.6. Marking attendance: <code>attendance</code></a></li>
-<li><a href="#schedule-timetables-code-schedule-code">3.7. Schedule timetables: <code>schedule</code></a></li>
-<li><a href="#emailing-students-code-email-code">3.8. Emailing students: <code>email</code></a></li>
+<li><a href="#schedule-events-code-schedule-code">3.7. Schedule events: <code>schedule</code></a></li>
+<li><a href="#cancel-event-code-cancel-code">3.8. Cancel event: <code>cancel</code></a></li>
 <li><a href="#locating-students-by-name-tag-code-find-code">3.9. Locating students by name/tag: <code>find</code></a></li>
 <li><a href="#deleting-a-student-code-delete-code">3.10. Deleting a student : <code>delete</code></a></li>
 <li><a href="#selecting-a-student-code-select-code">3.11. Selecting a student : <code>select</code></a></li>
@@ -277,20 +277,23 @@ Marks the attendance of the student with index number 3 as absent.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule-timetables-code-schedule-code"><a class="link" href="#schedule-timetables-code-schedule-code">3.7. Schedule timetables: <code>schedule</code></a></h3>
+<h3 id="schedule-events-code-schedule-code"><a class="link" href="#schedule-events-code-schedule-code">3.7. Schedule events: <code>schedule</code></a></h3>
 <div class="paragraph">
 <p>Schedules an event for the user to keep track of.<br>
-Format: <code>schedule event/EVENT_NAME date/DATE start/TIME_START end/TIME_END descr/DESCRIPTION</code></p>
+Format: <code>schedule event/EVENT_NAME date/DATE start/TIME_START end/TIME_END [descr/DESCRIPTION]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The event will be scheduled and reflected on the user&#8217;s list of events</p>
+<p>The event will be scheduled and reflected on the user&#8217;s list of events.</p>
 </li>
 <li>
-<p>Invalid dates and times will not be scheduled e.g. <code>32-12-2018</code> will not schedule any event. Also, the year range is between 1600 and 9999</p>
+<p>Events with the same event name, date, start time, and end time, will be considered as duplicates, and will not be scheduled again.</p>
+</li>
+<li>
+<p>Invalid dates and times will not be scheduled e.g. <code>32-12-2018</code> will not schedule any event. Also, the year range is between 1600 and 9999.</p>
 </li>
 </ul>
 </div>
@@ -302,14 +305,44 @@ Format: <code>schedule event/EVENT_NAME date/DATE start/TIME_START end/TIME_END 
 <div class="ulist">
 <ul>
 <li>
-<p><code>schedule event/CS2103-Tutorial-W13 date/22-3-2018 start/16:00 end/18:00 descr/Product demo</code><br>
-Schedules an event named <code>CS2103-Tutorial-W13</code> on 22-3-2018 from 4:00pm to 6:00pm</p>
+<p><code>schedule event/CS2103 Tutorial W13 date/22-3-2018 start/16:00 end/18:00 descr/Product demo</code><br>
+Schedules an event named <code>CS2103-Tutorial-W13</code> on 22-3-2018 from 4:00pm to 6:00pm.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="emailing-students-code-email-code"><a class="link" href="#emailing-students-code-email-code">3.8. Emailing students: <code>email</code></a></h3>
+<h3 id="cancel-event-code-cancel-code"><a class="link" href="#cancel-event-code-cancel-code">3.8. Cancel event: <code>cancel</code></a></h3>
+<div class="paragraph">
+<p>Cancels an event already in the calendar.<br>
+Format: <code>cancel event/EVENT_NAME date/DATE start/TIME_START end/TIME_END</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The event will be cancelled and be deleted from the user&#8217;s list of events.</p>
+</li>
+<li>
+<p>Like <code>schedule</code>, the format is the same, and the event with the exact details must exist within the calendar.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>cancel event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code><br>
+Cancels the event named <code>CS2103-Tutorial-W13</code> on 24-9-2019 from 6:00pm to 7:00pm.
+=== Emailing students: <code>email</code></p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Allows the user to email a specified student.<br>
 Format: <code>email i/INDEX s/SUBJECT b/BODY</code></p>
@@ -520,7 +553,7 @@ Format: <code>history</code></p>
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.13. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
+<p>Restores the address book and/or calendar to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
 </div>
 <div class="admonitionblock note">
@@ -531,7 +564,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>) or the calendar&#8217;s content (<code>schedule</code>, <code>cancel</code>, and <code>clear</code>)</p>
 </div>
 </td>
 </tr>
@@ -555,8 +588,8 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </li>
 <li>
 <p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>schedule event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code><br>
+<code>undo</code> (reverses the <code>schedule event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code> command)<br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
@@ -597,7 +630,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sect2">
 <h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.15. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book while still maintaining the calendar.<br>
+<p>Clears all entries from the address book and calendar.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
@@ -816,6 +849,10 @@ e.g. <code>attd CS2103-Tutorial-W13</code></p>
 e.g <code>schedule event/CS2103-Tutorial-W13 date/22-3-2018 start/16:00 end/18:00 descr/Product demo</code></p>
 </li>
 <li>
+<p><strong>Cancel</strong> : <code>cancel event/EVENT_NAME date/DATE start/TIME_START end/TIME_END</code><br>
+e.g. <code>cancel event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code></p>
+</li>
+<li>
 <p><strong>Email</strong> : <code>email GROUP_NAME [MORE_GROUP_NAMES]
 e.g. `email CS2103-Tutorial-W13</code></p>
 </li>
@@ -867,4 +904,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-08 15:15:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-09 09:07:26 UTC</div></div></div></body></html>
