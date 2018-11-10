@@ -1,578 +1,142 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ConTAct - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Preethi Devarajan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ConTAct</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W13-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ConTAct - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ConTAct</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W13-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Preethi Devarajan - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-contact"><a class="link" href="#project-contact">PROJECT: ConTAct</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>By: <code>Team ConTAct</code>      Since: <code>Aug 2018</code>      Licence: <code>MIT</code></p>
-</div>
-</div>
-<div id="toc" class="toc">
-<div id="toctitle"></div>
-<ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a>
-<ul class="sectlevel2">
-<li><a href="#prerequisites">1.1. Prerequisites</a></li>
-<li><a href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></li>
-<li><a href="#verifying-the-setup">1.3. Verifying the setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></li>
-</ul>
-</li>
-<li><a href="#design">2. Design</a>
-<ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
-</ul>
-</li>
-<li><a href="#implementation">3. Implementation</a>
-<ul class="sectlevel2">
-<li><a href="#email-feature">3.1. Email feature</a></li>
-<li><a href="#calendar-feature">3.2. Calendar feature</a></li>
-<li><a href="#attendance-feature">3.3. Attendance feature</a></li>
-<li><a href="#undo-redo-feature">3.4. Undo/Redo feature</a></li>
-<li><a href="#mark-feature">3.5. Mark feature</a></li>
-<li><a href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#documentation">4. Documentation</a>
-<ul class="sectlevel2">
-<li><a href="#editing-documentation">4.1. Editing Documentation</a></li>
-<li><a href="#publishing-documentation">4.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></li>
-<li><a href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></li>
-<li><a href="#Docs-PerFileDocSettings">4.5. Per-file Documentation Settings</a></li>
-<li><a href="#site-template">4.6. Site Template</a></li>
-</ul>
-</li>
-<li><a href="#Testing">5. Testing</a>
-<ul class="sectlevel2">
-<li><a href="#running-tests">5.1. Running Tests</a></li>
-<li><a href="#types-of-tests">5.2. Types of tests</a></li>
-<li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
-</ul>
-</li>
-<li><a href="#dev-ops">6. Dev Ops</a>
-<ul class="sectlevel2">
-<li><a href="#build-automation">6.1. Build Automation</a></li>
-<li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
-<li><a href="#coverage-reporting">6.3. Coverage Reporting</a></li>
-<li><a href="#documentation-previews">6.4. Documentation Previews</a></li>
-<li><a href="#making-a-release">6.5. Making a Release</a></li>
-<li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
-</ul>
-</li>
-<li><a href="#product-scope">Appendix A: Product Scope</a></li>
-<li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases-2">Appendix C: Use Cases</a></li>
-<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
-<ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-student">G.2. Deleting a student</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
-</ul>
-</li>
-</ul>
+<hr>
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="prerequisites"><a class="link" href="#prerequisites">1.1. Prerequisites</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>JDK <code>9</code></strong> or later</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-JDK <code>10</code> on Windows will fail to run tests in <a href="UsingGradle.html#Running-Tests">headless mode</a> due to a <a href="https://github.com/javafxports/openjdk-jfx/issues/66">JavaFX bug</a>.
-Windows developers are highly recommended to use JDK <code>9</code>.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p><strong>IntelliJ</strong> IDE</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-IntelliJ by default has Gradle and JavaFx plugins installed.<br>
-Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Fork this repo, and clone the fork to your computer</p>
-</li>
-<li>
-<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first)</p>
-</li>
-<li>
-<p>Set up the correct JDK version for Gradle</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code></p>
-</li>
-<li>
-<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Click <code>Import Project</code></p>
-</li>
-<li>
-<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code></p>
-</li>
-<li>
-<p>Click <code>Open as Project</code></p>
-</li>
-<li>
-<p>Click <code>OK</code> to accept the default settings</p>
-</li>
-<li>
-<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
-This will generate all resources required by the application and tests.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">1.3. Verifying the setup</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Run the <code>seedu.address.MainApp</code> and try a few commands</p>
-</li>
-<li>
-<p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></h3>
-<div class="sect3">
-<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the coding style</a></h4>
 <div class="paragraph">
-<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify,</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS)</p>
-</li>
-<li>
-<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code></p>
-</li>
-<li>
-<p>Click on the <code>Imports</code> tab to set the order</p>
-<div class="ulist">
-<ul>
-<li>
-<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements</p>
-</li>
-<li>
-<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code></p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
+<p>ConTAct is a desktop application designed to aid teaching assistants by providing them with features that is
+catered specifically for their use while still managing to be all-purpose enough to serve a variety of needs.</p>
 </div>
 <div class="paragraph">
-<p>Optionally, you can follow the <a href="UsingCheckstyle.html">UsingCheckstyle.adoc</a> document to configure Intellij to check style-compliance as you write code.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Configure the <a href="#Docs-SiteWideDocSettings">site-wide documentation settings</a> in <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/build.gradle"><code>build.gradle</code></a>, such as the <code>site-name</code>, to suit your own project.</p>
-</li>
-<li>
-<p>Replace the URL in the attribute <code>repoURL</code> in <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/docs/DeveloperGuide.adoc"><code>DeveloperGuide.adoc</code></a> and <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/docs/UserGuide.adoc"><code>UserGuide.adoc</code></a> with the URL of your fork.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">1.4.3. Setting up CI</a></h4>
-<div class="paragraph">
-<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
-</div>
-<div class="paragraph">
-<p>After setting up Travis, you can optionally set up coverage reporting for your team fork (see <a href="UsingCoveralls.html">UsingCoveralls.adoc</a>).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Coverage reporting could be useful for a team repository that hosts the final version but it is not that useful for your personal fork.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Optionally, you can set up AppVeyor as a second CI (see <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based)
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.4. Getting started with coding</a></h4>
-<div class="paragraph">
-<p>When you are ready to start coding,</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
-</li>
-<li>
-<p>Take a look at <a href="#GetStartedProgramming">[GetStartedProgramming]</a>.</p>
-</li>
-</ol>
-</div>
-</div>
+<p>Tutors interact with the application through the CLI, and the GUI is implemented using JavaFX. The app itself is written in Java.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/Architecture.png" alt="Architecture" width="600">
-</div>
-<div class="title">Figure 1. Architecture Diagram</div>
-</div>
-<div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
-</li>
-<li>
-<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components. Two of those classes play important roles at the architecture level.</p>
-</div>
+<p><strong>Major Enhancement</strong>: added Email feature in ConTAct</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>EventsCenter</code> : This class (written using <a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a>) is used by components to communicate with other components using events (i.e. a form of <em>Event Driven</em> design)</p>
+<p>What it does: allows the user to email a student directly from the application through a command</p>
 </li>
 <li>
-<p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
+<p>Justification: this feature significantly enhances the product by easing the process of emailing a student,
+making it quicker.</p>
+</li>
+<li>
+<p>Highlights: The feature includes a simple <code>email</code> command with which the subject and content can all be set,
+just through a single command. It required an in-depth anaylsis of how working with REST-ful API worked,
+and how to integrate it with a native application. It was a challenge to make it allow any NUS Outlook user be
+able to sign-in with his/her email and send an email to their student.</p>
+</li>
+<li>
+<p>Credits: The Outlook API usage online provided by Outlook itself served as a good guidance in implementing this.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>The rest of the App consists of four components.</p>
-</div>
+</li>
+<li>
+<p>Code contributed: <a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=preethi-d&amp;sort=displayName&amp;since=2018-09-12&amp;until=2018-11-09&amp;timeframe=day&amp;reverse=false&amp;repoSort=true">RepoSense Report</a></p>
+</li>
+<li>
+<p><strong>Other Contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The UI of the App.</p>
-</li>
-<li>
-<p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
-</li>
-<li>
-<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
-</li>
-<li>
-<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Each of the four components</p>
-</div>
+<p>Project Management:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Defines its <em>API</em> in an <code>interface</code> with the same name as the Component.</p>
-</li>
-<li>
-<p>Exposes its functionality using a <code>{Component Name}Manager</code> class.</p>
+<p>Managed the team and reminded members of deadlines, keeping them on track.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
-</div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
-</div>
-<h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
-<div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
-</div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command (part 1)</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The diagram below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SDforDeletePersonEventHandling.png" alt="SDforDeletePersonEventHandling" width="800">
-</div>
-<div class="title">Figure 4. Component interactions for <code>delete 1</code> command (part 2)</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Note how the event is propagated through the <code>EventsCenter</code> to the <code>Storage</code> and <code>UI</code> without <code>Model</code> having to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The sections below give more details of each component.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
-</div>
-<div class="title">Figure 5. Structure of the UI Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StudentListPanel</code>, <code>StatusBarFooter</code>, <code>EventListPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
-</div>
-<div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>UI</code> component,</p>
-</div>
+</li>
+<li>
+<p>Community:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Executes user commands using the <code>Logic</code> component.</p>
+<p>PRs reviewed: (Pull requests
+<a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/31">#31</a>
+<a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/73">#73</a>
+<a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/82">#82</a>)</p>
 </li>
 <li>
-<p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
+<p>Updated Documentation and sequence diagrams: (Pull requests
+<a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/23">#23</a>
+<a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/69">#69</a>
+<a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/44">#44</a>)</p>
 </li>
 <li>
-<p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
+<p>Reported bugs in the PE dry run. (Issues for
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/93">#93</a>
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/92">#92</a>
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/90">#90</a>
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/89">#89</a>
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/86">#86</a>
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/85">#85</a>
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/83">#83</a>
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/82">#82</a>
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/88">#88</a>
+<a href="https://github.com/CS2103-AY1819S1-T13-2/main/issues/84">#84</a>)</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
-<div id="fig-LogicClassDiagram" class="imageblock">
-<div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
-</div>
-<div class="title">Figure 6. Structure of the Logic Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> :
-<a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
-</li>
-<li>
-<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
-</li>
-<li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a student) and/or raise events.</p>
-</li>
-<li>
-<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
-</div>
-<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
-</div>
-<div class="title">Figure 8. Structure of the Model Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Model</code>,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
-</li>
-<li>
-<p>stores the Address Book data.</p>
-</li>
-<li>
-<p>stores the Calendar data.</p>
-</li>
-<li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Student&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
-</li>
-<li>
-<p>does not depend on any of the other three components.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
-</div>
-<div class="title">Figure 9. Structure of the Storage Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Storage</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
-</li>
-<li>
-<p>can save the Address Book data in xml format and read it back.</p>
-</li>
-<li>
-<p>can save the Calendar data in xml format and read it back.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
-<div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
-</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="contributions-to-user-guide"><a class="link" href="#contributions-to-user-guide">Contributions to User Guide</a></h2>
 <div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>This section describes some noteworthy details on how certain features are implemented.</p>
+<p>Updated UML Diagram</p>
 </div>
 <div class="sect2">
-<h3 id="email-feature"><a class="link" href="#email-feature">3.1. Email feature</a></h3>
+<h3 id="email-feature"><a class="link" href="#email-feature">Email feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-emailing-a-single-student"><a class="link" href="#current-implementation-emailing-a-single-student">3.1.1. Current implementation - Emailing a single student</a></h4>
+<h4 id="current-implementation-emailing-a-single-student"><a class="link" href="#current-implementation-emailing-a-single-student">Current implementation - Emailing a single student</a></h4>
 <div class="paragraph">
 <p>The email feature is faciliated by Outlook Mail API, since most NUS teaching assistants have an Outlook account. This API is a RESTful API, made for server-client communication. Since the Outlook mail API is a RESTful API, this feature uses the 'POST' request (which requests that the web server accepts the data enclosed in the body of the request message) to send the email specified in the user-input to the student specified in the user-input.
 The email command itself takes a few parameters:</p>
@@ -601,31 +165,31 @@ The email command itself takes a few parameters:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/EmailCommand%20Sequence%20Diagram.png" alt="EmailCommand Sequence Diagram" width="800">
+<img src="../images/EmailCommand%20Sequence%20Diagram.png" alt="EmailCommand Sequence Diagram" width="800">
 </div>
-<div class="title">Figure 10. Component interactions for email command</div>
+<div class="title">Figure 1. Component interactions for email command</div>
 </div>
 <div class="paragraph">
 <p>In the 'POST' request, a access token is required in order to be able to communicate to the web server, which is <code>Outlook</code> in this case. To get this access token from Outlook, a authorization code must be used, which is also provided when applicatoin is registered and authorized under Outlook. Only with this access token, can the email that is created be sent to Outlook as a 'POST' request.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UML%20REST%20API.png" alt="UML REST API" width="400">
+<img src="../images/UML%20REST%20API.png" alt="UML REST API" width="400">
 </div>
-<div class="title">Figure 11. App interactions with Outlook for email command</div>
+<div class="title">Figure 2. App interactions with Outlook for email command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="alternative-implementations"><a class="link" href="#alternative-implementations">3.1.2. Alternative implementations:</a></h4>
+<h4 id="alternative-implementations"><a class="link" href="#alternative-implementations">Alternative implementations:</a></h4>
 <div class="paragraph">
 <p>Including UI features to make Outlook&#8217;s mail drafting screen appear in the <code>Browser Panel</code>, and requiring the user to input the index of student to email, the subject, and the body as three seperate inputs instead of one.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-feature"><a class="link" href="#calendar-feature">3.2. Calendar feature</a></h3>
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">Calendar feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>Th event feature is largely centered around the <code>Event</code> class, and is integrated into ConTAct in a similar fashion to the address book.
 The main commands supporting this feature are <code>schedule</code> and <code>cancel</code>, which both interact with the <code>Calendar</code> model by adding and deleting events from the calendar respectively.
@@ -699,27 +263,27 @@ scheduled. On startup, the calendar will scroll to the first upcoming event.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ScheduleEventSequenceDiagram.png" alt="ScheduleEventSequenceDiagram" width="800">
+<img src="../images/ScheduleEventSequenceDiagram.png" alt="ScheduleEventSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 12. Component interactions for <code>schedule EVENT</code> command (part 1)</div>
+<div class="title">Figure 3. Component interactions for <code>schedule EVENT</code> command (part 1)</div>
 </div>
 <div class="paragraph">
 <p>The diagram below shows how the EventsCenter reacts to the CalendarChangedEvent, which also results in updates to the storage and the UI.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/EventStorageSequenceDiagram.png" alt="EventStorageSequenceDiagram" width="800">
+<img src="../images/EventStorageSequenceDiagram.png" alt="EventStorageSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 13. Component interactions for <code>schedule EVENT</code> command (part 2)</div>
+<div class="title">Figure 4. Component interactions for <code>schedule EVENT</code> command (part 2)</div>
 </div>
 <div class="paragraph">
 <p>The diagram below shows how the schedule command is parsed in the Logic component. Here again, <code>EVENT</code> is the event as specified by the input parameters.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ScheduleEventSdForLogic.png" alt="ScheduleEventSdForLogic" width="800">
+<img src="../images/ScheduleEventSdForLogic.png" alt="ScheduleEventSdForLogic" width="800">
 </div>
-<div class="title">Figure 14. Logic diagram for <code>schedule EVENT</code> command</div>
+<div class="title">Figure 5. Logic diagram for <code>schedule EVENT</code> command</div>
 </div>
 </div>
 <div class="sect4">
@@ -805,7 +369,7 @@ interacts as expected with the undo/redo command as well.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-storing-the-sorted-list-of-events"><a class="link" href="#aspect-storing-the-sorted-list-of-events">Aspect: Storing the sorted list of events</a></h5>
 <div class="ulist">
@@ -838,7 +402,7 @@ interacts as expected with the undo/redo command as well.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="aspect-displaying-the-events-in-the-gui"><a class="link" href="#aspect-displaying-the-events-in-the-gui">3.2.3. Aspect: Displaying the events in the GUI</a></h4>
+<h4 id="aspect-displaying-the-events-in-the-gui"><a class="link" href="#aspect-displaying-the-events-in-the-gui">Aspect: Displaying the events in the GUI</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -871,7 +435,7 @@ interacts as expected with the undo/redo command as well.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="aspect-how-to-display-events"><a class="link" href="#aspect-how-to-display-events">3.2.4. Aspect: How to display events</a></h4>
+<h4 id="aspect-how-to-display-events"><a class="link" href="#aspect-how-to-display-events">Aspect: How to display events</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -950,9 +514,9 @@ is distinct.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="attendance-feature"><a class="link" href="#attendance-feature">3.3. Attendance feature</a></h3>
+<h3 id="attendance-feature"><a class="link" href="#attendance-feature">Attendance feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>attendance</code> command is a completely new feature that allows the user to mark the attendance of students
 within ConTAct. It follows a similar command flow as that of the address book, and the command will uses the model and
@@ -1028,34 +592,34 @@ Furthermore, the attendance command ensures that all the fields specified must b
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/attendance_diagram1.png" alt="attendance diagram1" width="800">
+<img src="../images/attendance_diagram1.png" alt="attendance diagram1" width="800">
 </div>
-<div class="title">Figure 15. Component interactions for <code>attendance</code> command (part1)</div>
+<div class="title">Figure 6. Component interactions for <code>attendance</code> command (part1)</div>
 </div>
 <div class="paragraph">
 <p>The diagram below shows how the EventsCenter reacts to the AddressBookChangedEvent, which also results in updates to the storage and the UI.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/attendance_diagram2.png" alt="attendance diagram2" width="800">
+<img src="../images/attendance_diagram2.png" alt="attendance diagram2" width="800">
 </div>
-<div class="title">Figure 16. Component interactions for <code>attendance</code> command (part2)</div>
+<div class="title">Figure 7. Component interactions for <code>attendance</code> command (part2)</div>
 </div>
 <div class="paragraph">
 <p>The diagram below shows how the <code>attendance</code> command is parsed in the Logic component.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/attendance_diagram_logic.png" alt="attendance diagram logic" width="800">
+<img src="../images/attendance_diagram_logic.png" alt="attendance diagram logic" width="800">
 </div>
-<div class="title">Figure 17. Logic Diagram for <code>attendance</code> command</div>
+<div class="title">Figure 8. Logic Diagram for <code>attendance</code> command</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.4. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -1085,7 +649,7 @@ Additionally, it implements the following operations:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
+<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -1093,7 +657,7 @@ Additionally, it implements the following operations:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
+<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -1101,7 +665,7 @@ Additionally, it implements the following operations:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
+<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1121,7 +685,7 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
+<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1141,7 +705,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
+<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -1164,7 +728,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
+<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -1172,7 +736,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
+<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -1180,12 +744,12 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1255,14 +819,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="mark-feature"><a class="link" href="#mark-feature">3.5. Mark feature</a></h3>
+<h3 id="mark-feature"><a class="link" href="#mark-feature">Mark feature</a></h3>
 <div class="paragraph">
 <p>Marks allow tutors to manage groups of students easily without typing a command multiple times for each student in the class.
 It is designed to work well with the existing <code>Tag</code> system, and designed with commands such as <code>attendance</code> and <code>email</code> in mind.
 It is session based, meaning that groups are not stored in the data files after the app has closed, and is not intended as a replacement for <code>Tag</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.5.1. Implementation</a></h4>
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
 <p><code>Mark</code> is a container class which stores a <code>Set&lt;Student&gt;</code> and exposes getter and setter methods, as well as methods for union and intersection of <code>Marks</code>.</p>
 </div>
@@ -1286,7 +850,7 @@ It is designed in this way to be easily extensible in the future as more sub-com
 </div>
 </div>
 <div class="sect3">
-<h4 id="sub-commands"><a class="link" href="#sub-commands">3.5.2. Sub-commands</a></h4>
+<h4 id="sub-commands"><a class="link" href="#sub-commands">Sub-commands</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1305,7 +869,7 @@ It is designed in this way to be easily extensible in the future as more sub-com
 </div>
 </div>
 <div class="sect3">
-<h4 id="planned-sub-commands-1-4"><a class="link" href="#planned-sub-commands-1-4">3.5.3. Planned Sub-commands (1.4)</a></h4>
+<h4 id="planned-sub-commands-1-4"><a class="link" href="#planned-sub-commands-1-4">Planned Sub-commands (1.4)</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1321,7 +885,7 @@ It is designed in this way to be easily extensible in the future as more sub-com
 </div>
 </div>
 <div class="sect3">
-<h4 id="use-cases"><a class="link" href="#use-cases">3.5.4. Use Cases:</a></h4>
+<h4 id="use-cases"><a class="link" href="#use-cases">Use Cases:</a></h4>
 <div class="paragraph">
 <p>Suppose a tutor wants to mark the attendance of all students from tutorial groups W13 and W14.</p>
 </div>
@@ -1364,25 +928,25 @@ They can do that with a simple command:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.5. Design considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design considerations</a></h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Configuration</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1413,7 +977,7 @@ They can do that with a simple command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1421,7 +985,7 @@ They can do that with a simple command:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We use asciidoc for writing documentation.</p>
@@ -1439,20 +1003,20 @@ We chose asciidoc over Markdown because asciidoc, although a bit more complex th
 </table>
 </div>
 <div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">4.1. Editing Documentation</a></h3>
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">Editing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
 Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">4.2. Publishing Documentation</a></h3>
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">Publishing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></h3>
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">Converting Documentation to PDF format</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
@@ -1477,15 +1041,15 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
+<img src="../images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 18. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 9. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></h3>
+<h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">Site-wide Documentation Settings</a></h3>
 <div class="paragraph">
-<p>The <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
+<p>The <a href="{repoURL}/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1534,7 +1098,7 @@ Setting this will add a "View on GitHub" link in the navigation bar.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">4.5. Per-file Documentation Settings</a></h3>
+<h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">Per-file Documentation Settings</a></h3>
 <div class="paragraph">
 <p>Each <code>.adoc</code> file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how the file is rendered.</p>
 </div>
@@ -1588,13 +1152,13 @@ One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>AboutUs</code
 </table>
 </div>
 <div class="sect2">
-<h3 id="site-template"><a class="link" href="#site-template">4.6. Site Template</a></h3>
+<h3 id="site-template"><a class="link" href="#site-template">Site Template</a></h3>
 <div class="paragraph">
-<p>The files in <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
+<p>The files in <a href="{repoURL}/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
 You can modify them to change some properties of the site&#8217;s design.</p>
 </div>
 <div class="paragraph">
-<p>The files in <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/docs/templates"><code>docs/templates</code></a> controls the rendering of <code>.adoc</code> files into HTML5.
+<p>The files in <a href="{repoURL}/docs/templates"><code>docs/templates</code></a> controls the rendering of <code>.adoc</code> files into HTML5.
 These template files are written in a mixture of <a href="https://www.ruby-lang.org">Ruby</a> and <a href="http://slim-lang.com">Slim</a>.</p>
 </div>
 <div class="admonitionblock warning">
@@ -1605,7 +1169,7 @@ These template files are written in a mixture of <a href="https://www.ruby-lang.
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Modifying the template files in <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
+<p>Modifying the template files in <a href="{repoURL}/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
 You should only modify them if you need greater control over the site&#8217;s layout than what stylesheets can provide.</p>
 </div>
 </td>
@@ -1616,10 +1180,10 @@ You should only modify them if you need greater control over the site&#8217;s la
 </div>
 </div>
 <div class="sect1">
-<h2 id="Testing"><a class="link" href="#Testing">5. Testing</a></h2>
+<h2 id="Testing"><a class="link" href="#Testing">Testing</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">5.1. Running Tests</a></h3>
+<h3 id="running-tests"><a class="link" href="#running-tests">Running Tests</a></h3>
 <div class="paragraph">
 <p>There are three ways to run tests.</p>
 </div>
@@ -1681,7 +1245,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 </div>
 <div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.2. Types of tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">Types of tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -1723,7 +1287,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></h3>
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">Troubleshooting Testing</a></h3>
 <div class="paragraph">
 <p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
@@ -1741,41 +1305,41 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">6.1. Build Automation</a></h3>
+<h3 id="build-automation"><a class="link" href="#build-automation">Build Automation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">6.2. Continuous Integration</a></h3>
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">Continuous Integration</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">6.3. Coverage Reporting</a></h3>
+<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">Coverage Reporting</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="documentation-previews"><a class="link" href="#documentation-previews">6.4. Documentation Previews</a></h3>
+<h3 id="documentation-previews"><a class="link" href="#documentation-previews">Documentation Previews</a></h3>
 <div class="paragraph">
 <p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">6.5. Making a Release</a></h3>
+<h3 id="making-a-release"><a class="link" href="#making-a-release">Making a Release</a></h3>
 <div class="paragraph">
 <p>Here are the steps to create a new release.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version number in <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+<p>Update the version number in <a href="{repoURL}/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -1790,7 +1354,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">6.6. Managing Dependencies</a></h3>
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">Managing Dependencies</a></h3>
 <div class="paragraph">
 <p>A project often depends on third-party libraries. For example, Address Book depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
 a. Include those libraries in the repo (this bloats the repo size)<br>
@@ -2482,7 +2046,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2520,7 +2084,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">G.2. Deleting a student</a></h3>
+<h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">Deleting a student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2552,7 +2116,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>

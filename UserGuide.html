@@ -16,24 +16,25 @@
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-a-student-code-add-code">3.2. Adding a student: <code>add</code></a></li>
 <li><a href="#listing-all-students-code-list-code">3.3. Listing all students : <code>list</code></a></li>
-<li><a href="#editing-a-student-code-edit-code">3.4. Editing a student : <code>edit</code></a></li>
-<li><a href="#sorting-students-code-sort-code">3.5. Sorting students: <code>sort</code></a></li>
-<li><a href="#marking-attendance-code-attendance-code">3.6. Marking attendance: <code>attendance</code></a></li>
-<li><a href="#schedule-timetables-code-schedule-code">3.7. Schedule timetables: <code>schedule</code></a></li>
-<li><a href="#schedule-events-code-schedule-code">3.8. Schedule events: <code>schedule</code></a></li>
-<li><a href="#cancel-event-code-cancel-code">3.9. Cancel event: <code>cancel</code></a></li>
-<li><a href="#locating-students-by-name-tag-code-find-code">3.10. Locating students by name/tag: <code>find</code></a></li>
-<li><a href="#deleting-a-student-code-delete-code">3.11. Deleting a student : <code>delete</code></a></li>
-<li><a href="#selecting-a-student-code-select-code">3.12. Selecting a student : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.14. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.15. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></li>
-<li><a href="#tag-students-code-tag-code">3.18. Tag Students: <code>tag</code></a></li>
-<li><a href="#mark-code-mark-code">3.19. Mark: <code>mark</code></a></li>
-<li><a href="#saving-the-data">3.20. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.21. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#emailing-a-student-code-email-code">3.4. Emailing a student : <code>email</code></a></li>
+<li><a href="#editing-a-student-code-edit-code">3.5. Editing a student : <code>edit</code></a></li>
+<li><a href="#sorting-students-code-sort-code">3.6. Sorting students: <code>sort</code></a></li>
+<li><a href="#marking-attendance-code-attendance-code">3.7. Marking attendance: <code>attendance</code></a></li>
+<li><a href="#schedule-timetables-code-schedule-code">3.8. Schedule timetables: <code>schedule</code></a></li>
+<li><a href="#schedule-events-code-schedule-code">3.9. Schedule events: <code>schedule</code></a></li>
+<li><a href="#cancel-event-code-cancel-code">3.10. Cancel event: <code>cancel</code></a></li>
+<li><a href="#locating-students-by-name-tag-code-find-code">3.11. Locating students by name/tag: <code>find</code></a></li>
+<li><a href="#deleting-a-student-code-delete-code">3.12. Deleting a student : <code>delete</code></a></li>
+<li><a href="#selecting-a-student-code-select-code">3.13. Selecting a student : <code>select</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.14. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.15. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.16. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.17. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.18. Exiting the program : <code>exit</code></a></li>
+<li><a href="#tag-students-code-tag-code">3.19. Tag Students: <code>tag</code></a></li>
+<li><a href="#mark-code-mark-code">3.20. Mark: <code>mark</code></a></li>
+<li><a href="#saving-the-data">3.21. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.22. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -173,7 +174,37 @@ Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.4. Editing a student : <code>edit</code></a></h3>
+<h3 id="emailing-a-student-code-email-code"><a class="link" href="#emailing-a-student-code-email-code">3.4. Emailing a student : <code>email</code></a></h3>
+<div class="literalblock">
+<div class="content">
+<pre>Allows the user to email a specified student. +
+Format: `email INDEX s/SUBJECT b/BODY`</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>****
+* The subject of the email is specified after the s/ and the body after the b/.
+* The user can specify only one student index, after the 'email' command word.
+****</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Examples:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>email 2 s/Attendance Problem b/Your attendance is poor. Is there a problem?</code><br>
+Gathers the email address of the student with index 2 for emailing, and sets the subject and body respectively.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.5. Editing a student : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing student in the address book.<br>
 Format: <code>edit INDEX [n/NAME] [sn/STUDENT_NUMBER] [e/EMAIL] [f/FACULTY] [t/TAG]&#8230;&#8203;</code></p>
@@ -218,7 +249,7 @@ Edits the name of the 2nd student to be <code>Betsy Crower</code> and clears all
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-students-code-sort-code"><a class="link" href="#sorting-students-code-sort-code">3.5. Sorting students: <code>sort</code></a></h3>
+<h3 id="sorting-students-code-sort-code"><a class="link" href="#sorting-students-code-sort-code">3.6. Sorting students: <code>sort</code></a></h3>
 <div class="paragraph">
 <p>Sorts students according to a given parameter.<br>
 Format: <code>sort PARAMETER</code></p>
@@ -245,7 +276,7 @@ Returns a list of students sorted by their grades, which is a field of each stud
 </div>
 </div>
 <div class="sect2">
-<h3 id="marking-attendance-code-attendance-code"><a class="link" href="#marking-attendance-code-attendance-code">3.6. Marking attendance: <code>attendance</code></a></h3>
+<h3 id="marking-attendance-code-attendance-code"><a class="link" href="#marking-attendance-code-attendance-code">3.7. Marking attendance: <code>attendance</code></a></h3>
 <div class="paragraph">
 <p>Allows the user to mark the attendance of students using the index number as well as mark name.<br>
 Format: <code>attendance INDEX_NUMBER at/ATTENDANCE</code> or <code>attendance m/MARK_NAME at/ATTENDANCE</code></p>
@@ -282,11 +313,11 @@ Marks the attendance of all the students in mark-tutorial1 as present.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule-timetables-code-schedule-code"><a class="link" href="#schedule-timetables-code-schedule-code">3.7. Schedule timetables: <code>schedule</code></a></h3>
+<h3 id="schedule-timetables-code-schedule-code"><a class="link" href="#schedule-timetables-code-schedule-code">3.8. Schedule timetables: <code>schedule</code></a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="schedule-events-code-schedule-code"><a class="link" href="#schedule-events-code-schedule-code">3.8. Schedule events: <code>schedule</code></a></h3>
+<h3 id="schedule-events-code-schedule-code"><a class="link" href="#schedule-events-code-schedule-code">3.9. Schedule events: <code>schedule</code></a></h3>
 <div class="paragraph">
 <p>Schedules an event for the user to keep track of.<br>
 Format: <code>schedule event/EVENT_NAME date/DATE start/TIME_START end/TIME_END [descr/DESCRIPTION]</code></p>
@@ -321,7 +352,7 @@ Schedules an event named <code>CS2103-Tutorial-W13</code> on 22-3-2018 from 4:00
 </div>
 </div>
 <div class="sect2">
-<h3 id="cancel-event-code-cancel-code"><a class="link" href="#cancel-event-code-cancel-code">3.9. Cancel event: <code>cancel</code></a></h3>
+<h3 id="cancel-event-code-cancel-code"><a class="link" href="#cancel-event-code-cancel-code">3.10. Cancel event: <code>cancel</code></a></h3>
 <div class="paragraph">
 <p>Cancels an event already in the calendar.<br>
 Format: <code>cancel event/EVENT_NAME date/DATE start/TIME_START end/TIME_END</code></p>
@@ -383,7 +414,7 @@ Gathers the email address of the student with index 2 for emailing, and sets the
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-students-by-name-tag-code-find-code"><a class="link" href="#locating-students-by-name-tag-code-find-code">3.10. Locating students by name/tag: <code>find</code></a></h3>
+<h3 id="locating-students-by-name-tag-code-find-code"><a class="link" href="#locating-students-by-name-tag-code-find-code">3.11. Locating students by name/tag: <code>find</code></a></h3>
 <div class="paragraph">
 <p>Finds students whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
@@ -457,7 +488,7 @@ Returns students tagged with <code>t/students</code> or <code>t/colleagues</code
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.11. Deleting a student : <code>delete</code></a></h3>
+<h3 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.12. Deleting a student : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified student from the address book.<br>
 Format: <code>delete INDEX</code></p>
@@ -498,7 +529,7 @@ Deletes the 1st student in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.12. Selecting a student : <code>select</code></a></h3>
+<h3 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.13. Selecting a student : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the student identified by the index number used in the displayed student list.<br>
 Format: <code>select INDEX</code></p>
@@ -539,7 +570,7 @@ Selects the 1st student in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.14. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -560,7 +591,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.14. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.15. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book and/or calendar to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -605,7 +636,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.15. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.16. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -637,21 +668,21 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.17. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book and calendar.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.18. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tag-students-code-tag-code"><a class="link" href="#tag-students-code-tag-code">3.18. Tag Students: <code>tag</code></a></h3>
+<h3 id="tag-students-code-tag-code"><a class="link" href="#tag-students-code-tag-code">3.19. Tag Students: <code>tag</code></a></h3>
 <div class="paragraph">
 <p>Adds, sets or deletes tags from students (by index or by name).</p>
 </div>
@@ -691,12 +722,12 @@ tag add m/students t/cs2103 // Adds the tag "cs2103" to all students in the mark
 </div>
 </div>
 <div class="sect2">
-<h3 id="mark-code-mark-code"><a class="link" href="#mark-code-mark-code">3.19. Mark: <code>mark</code></a></h3>
+<h3 id="mark-code-mark-code"><a class="link" href="#mark-code-mark-code">3.20. Mark: <code>mark</code></a></h3>
 <div class="paragraph">
 <p>A Mark represents a group of Students in the app. Some commands accept Marks as an alternative to INDEX as a parameter to quickly perform batch operations.</p>
 </div>
 <div class="sect3">
-<h4 id="mark-creation"><a class="link" href="#mark-creation">3.19.1. Mark Creation</a></h4>
+<h4 id="mark-creation"><a class="link" href="#mark-creation">3.20.1. Mark Creation</a></h4>
 <div class="paragraph">
 <p>Format: <code>mark find t/TAGNAME</code> or <code>mark find KEYWORD</code></p>
 </div>
@@ -708,7 +739,7 @@ tag add m/students t/cs2103 // Adds the tag "cs2103" to all students in the mark
 </div>
 </div>
 <div class="sect3">
-<h4 id="named-marks"><a class="link" href="#named-marks">3.19.2. Named Marks</a></h4>
+<h4 id="named-marks"><a class="link" href="#named-marks">3.20.2. Named Marks</a></h4>
 <div class="paragraph">
 <p>Marks can be named by using the prefix <code>m/MARKNAME</code>. If not specified, the name of the created Mark will default to "m/default".</p>
 </div>
@@ -720,7 +751,7 @@ tag add m/students t/cs2103 // Adds the tag "cs2103" to all students in the mark
 </div>
 </div>
 <div class="sect3">
-<h4 id="manipulating-marks"><a class="link" href="#manipulating-marks">3.19.3. Manipulating Marks</a></h4>
+<h4 id="manipulating-marks"><a class="link" href="#manipulating-marks">3.20.3. Manipulating Marks</a></h4>
 <div class="paragraph">
 <p>Marks are able to be manipulated in the same way as sets, namely, they support the following operations: <code>union (join)</code>, <code>intersection (and)</code>, <code>complement (NYI)</code></p>
 </div>
@@ -738,7 +769,7 @@ tag add m/students t/cs2103 // Adds the tag "cs2103" to all students in the mark
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-marks"><a class="link" href="#displaying-marks">3.19.4. Displaying Marks</a></h4>
+<h4 id="displaying-marks"><a class="link" href="#displaying-marks">3.20.4. Displaying Marks</a></h4>
 <div class="paragraph">
 <p>The Students in a Mark can be shown in the GUI wit the following command:</p>
 </div>
@@ -747,7 +778,7 @@ tag add m/students t/cs2103 // Adds the tag "cs2103" to all students in the mark
 </div>
 </div>
 <div class="sect3">
-<h4 id="reference"><a class="link" href="#reference">3.19.5. Reference</a></h4>
+<h4 id="reference"><a class="link" href="#reference">3.20.5. Reference</a></h4>
 <div class="paragraph">
 <p><code>mark [m/m1] &#8230;&#8203;</code></p>
 </div>
@@ -802,14 +833,14 @@ tag add m/students t/cs2103 // Adds the tag "cs2103" to all students in the mark
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.20. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.21. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.21. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.22. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -913,4 +944,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 14:39:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 15:08:08 UTC</div></div></div></body></html>
