@@ -74,7 +74,8 @@
 <p>Updated Documentation and sequence diagrams. (Pull requests
 <a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/78">#78</a>
 <a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/125">#125</a>
-<a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/128">#128</a></p>
+<a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/128">#128</a>
+<a href="https://github.com/CS2103-AY1819S1-W13-3/main/pull/139">#139</a>)</p>
 </li>
 <li>
 <p>Reported bugs for Team F10-2 during Practical Exam dry run. (Issues
@@ -103,4 +104,228 @@
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:00:27 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="marking-attendance-code-attendance-code"><a class="link" href="#marking-attendance-code-attendance-code">Marking attendance: <code>attendance</code></a></h3>
+<div class="paragraph">
+<p>Allows the user to mark the attendance of students using the index number as well as mark name.<br>
+Format: <code>attendance INDEX_NUMBER at/ATTENDANCE</code> or <code>attendance m/MARK_NAME at/ATTENDANCE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The attendance marking as present is done individually, by using the index number of the student. The user can also collectively mark the attendance using the MARK feature. Then, the user can update the attendance of the students who do not follow the majority specifically. The user can update the attendance of the student/students who are absent as 'absent'/'0' and who are present as 'present'/'1'(any other value updates the attendance to undefined).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>attendance 1 at/present</code><br>
+Marks the attendance of the student with index number 1 as present.</p>
+</li>
+<li>
+<p><code>attendance 3 at/0</code><br>
+Marks the attendance of the student with index number 3 as absent.</p>
+</li>
+<li>
+<p><code>attendance m/tutorial1 at/1</code><br>
+Marks the attendance of all the students in mark-tutorial1 as present.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="attendance-feature"><a class="link" href="#attendance-feature">Attendance feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>attendance</code> command is a completely new feature that allows the user to mark the attendance of students
+within ConTAct. It follows a similar command flow as that of the address book, and the command will uses the model and
+storage of the other commands.To facilitate this command, a new data type is introduced: the Attendance class. The Attendance class has it&#8217;s own unique fields that the user can specify to mark the attendance. The Attendance class uses another class called the AttendanceEnum class. This AttendanceEnum class is used to declare the Attendance Enums:PRESENT, ABSENT and UNDEFINED which are then used in the Attendance class.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The attendance class has an overloaded constructor which takes in different parameters.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Field of first constructor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Attendance: takes in an AttendanceEnum, can be PRESENT, ABSENT or UNDEFINED</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Field of second constructor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Attendance: takes in a String attendance, where absent/0 is changed to ABSENT enum, present/1 to PRESENT enum and an empty string is changed to UNDEFINED enum</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Currently, the main operation is the <code>attendance</code> command, and it is implemented as such:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>attendance INDEX at/ATTENDANCE</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>attendance</code> command may also be used with the <code>mark</code> command to update the attendance of multiple students at the same time. It is implemented as such:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>attendance m/MARK_NAME at/ATTENDANCE</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Currently, this operation exists within the logic component of ConTAct.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example of how the attendance command behaves:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>attendance 1 at/0</code></p>
+</li>
+<li>
+<p><code>attendance m/tutorial1 at/1</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This will simply specify the attendance field of the Student/Students with the specified attendance and store it similar to how the addressbook stores a student.
+Furthermore, the attendance command ensures that all the fields specified must be valid for it to be a success.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sequence-diagrams"><a class="link" href="#sequence-diagrams">Sequence Diagrams</a></h4>
+<div class="paragraph">
+<p>The sequence diagram below shows how the components interact for the scenario where the user issues the attendance command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="attendance_diagram1.png" alt="attendance diagram1" width="800">
+</div>
+<div class="title">Figure 1. Component interactions for <code>attendance</code> command (part1)</div>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the EventsCenter reacts to the AddressBookChangedEvent, which also results in updates to the storage and the UI.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="attendance_diagram2.png" alt="attendance diagram2" width="800">
+</div>
+<div class="title">Figure 2. Component interactions for <code>attendance</code> command (part2)</div>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the <code>attendance</code> command is parsed in the Logic component.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="attendance_diagram_logic.png" alt="attendance diagram logic" width="800">
+</div>
+<div class="title">Figure 3. Logic Diagram for <code>attendance</code> command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-updating-attendance-of-student"><a class="link" href="#aspect-updating-attendance-of-student">Aspect: Updating attendance of student</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Update using index and mark</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows flexibility for the user to either update attendance individually or collectively using mark.</p>
+</li>
+<li>
+<p>Cons: Slightly problematic to implement parser for the same command with two differing formats.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Update only using index/mark</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement.</p>
+</li>
+<li>
+<p>Cons: If only implemented using index, user may face difficulty in updating attendance of a large number of students. If only mark is implemented, user can only update attendance of a mark and not of an individual student.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="proposed-addition-for-v2-0"><a class="link" href="#proposed-addition-for-v2-0">Proposed addition for v2.0</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Store attendance of each student in an array according to weeks so that the user has a track of the attendance of each student for each of its classes according to week.</p>
+</li>
+<li>
+<p>Proposed new command format: <code>attendance INDEX|m/MARK_NAME w/WEEK_NUMBER at/ATTENDANCE</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:09:50 UTC</div></div></div></body></html>
