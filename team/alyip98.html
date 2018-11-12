@@ -1,0 +1,616 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Yip Seng Yeun - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ConTAct</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W13-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Yip Seng Yeun - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-contact"><a class="link" href="#project-contact">PROJECT: ConTAct</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ConTAct is an application designed to help teaching assistants manage the details of their students. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Ability to add students to a temporary group and perform batch operations on the group</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to create temporary groups of students and manipulate these groups using set operations (union, intersection) and run commands on groups of students instead of one by one</p>
+</li>
+<li>
+<p>Justification: This enhancement saves time and improves productivity as the user only has to run one command for each batch, instead of one command for every student</p>
+</li>
+<li>
+<p>Highlights: Greatly improves usability. Enhances other commands/features.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=alyip98">Link</a></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Minor enhancement: added a <code>tag</code> command to update tags of a group of students</p>
+</li>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maintain issue tracker</p>
+</li>
+<li>
+<p>Populate SampleData</p>
+</li>
+<li>
+<p>Assist GUI redesign</p>
+</li>
+<li>
+<p>Review team pull requests</p>
+</li>
+<li>
+<p>Assist team in debugging other features</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>added ability to <code>find</code> by tag</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Review other members' documentation and suggest improvements</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tweaked Travis CI build settings to forgive trivial errors (e.g. incorrect alphabetical order of imports will now only give a warning)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="group-code-group-code"><a class="link" href="#group-code-group-code">Group: <code>group</code></a></h3>
+<div class="paragraph">
+<p>A <code>Group</code> represents a group of <code>Students</code> in the app. Some commands accept <code>Groups</code> as an alternative to <code>INDEX</code> as a parameter to perform batch operations instead of individual operations.</p>
+</div>
+<div class="sect3">
+<h4 id="group-creation"><a class="link" href="#group-creation">Group Creation</a></h4>
+<div class="paragraph">
+<p>Format: <code>group [g/grpName] find t/TAGNAME</code> or <code>group [g/grpName] find KEYWORD</code></p>
+</div>
+<div class="paragraph">
+<p>This creates a Group containing the Students returned by the find command with the supplied arguments.</p>
+</div>
+<div class="paragraph">
+<p><code>group find t/friends</code> will find all students in the Address Book tagged with "friends" and add them to a group.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[v2.0] <code>group index INDEX&#8230;&#8203;</code> will take a series of indices as arguments and group the students represented by the indices</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// assume that the current display shows {Adam, Bob, Charles, Dylan}
+group g/grp1 index 1 4
+// g/grp1 will then contain {Adam, Dylan} since Adam is index 1 and Dylan is index 4 on the currently displayed list</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="named-groups"><a class="link" href="#named-groups">Named Groups</a></h4>
+<div class="paragraph">
+<p>Groups can be named by using the prefix <code>g/GROUPNAME</code>. If not specified, the name of the created Group will default to "g/default",
+i.e. <code>group find t/friends</code> is equivalent to <code>group g/default find t/friends</code></p>
+</div>
+<div class="paragraph">
+<p>E.g. <code>group g/myGroupName find t/friends</code> will add the Students tagged with "friends" to a Group called "myGroupName"</p>
+</div>
+<div class="paragraph">
+<p>Note: Group names must be alphanumeric and not contain spaces.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="manipulating-groups"><a class="link" href="#manipulating-groups">Manipulating Groups</a></h4>
+<div class="paragraph">
+<p>Groups are able to be manipulated to expand or contract the selection to fit the users needs</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>join</code> will take two groups as arguments and create a new group that contains students from either of the groups</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// assume that g/grp1 contains {Adam, Bob}
+// g/grp2 contains {Bob, Charles}
+group g/grp3 join g/grp1 g/grp2
+// g/grp3 will contain {Adam, Bob, Charles}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>and</code> will take two groups as arguments and create a new group that contains only students that are in both of the groups</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// assume that g/grp1 contains {Adam, Bob}
+// g/grp2 contains {Bob, Charles}
+group g/grp3 and g/grp1 g/grp2
+// g/grp3 will contain {Bob} since Bob is the only student in g/grp1 and g/grp2</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[v2.0] <code>complement</code> will take one groups as an argument and create a new group that contains every student except those in the supplied group</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// assume that there are a total of 3 entries, {Adam, Bob, Charles}
+// and g/grp1 contains {Bob}
+group g/grp2 complement g/grp1
+// g/grp2 will then contain {Adam, Charles} since Bob is in g/grp1 and will thus be excluded</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>General format: <code>group [g/DEST_GROUP] &lt;operation&gt; g/OPERANDGROUP1 [g/OPERANDGROUP2]</code></p>
+</div>
+<div class="paragraph">
+<p>Note: The first operand is compulsory while the second operand is optional and will default to "g/default"</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="displaying-groups"><a class="link" href="#displaying-groups">Displaying Groups</a></h4>
+<div class="paragraph">
+<p>The Students in a Group can be shown in the GUI with the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>group [g/GROUPTOBESHOWN] show</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="interactions-with-code-undo-code-and-code-redo-code"><a class="link" href="#interactions-with-code-undo-code-and-code-redo-code">Interactions with <code>undo</code> and <code>redo</code></a></h4>
+<div class="paragraph">
+<p>Due to the way <code>undo</code> and <code>redo</code> are implemented, Groups that are changed as a result of these commands will not behave as expected, the students that are changed will be removed from the Group.</p>
+</div>
+<div class="paragraph">
+<p>For example,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// g/grp1 contains {Adam, Bob}
+delete 1 // delete Adam
+// g/grp1 will now only contain {Bob}
+undo // restores Adam to the addressbook
+// g/grp1 will not be restored to the previous state and will still only contain {Bob}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reference"><a class="link" href="#reference">Reference</a></h4>
+<div class="paragraph">
+<p>(Implemented as of 1.4)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>group [g/grp1] find &lt;KEYWORD|t/TAG&#8230;&#8203;&gt;</code>&#8201;&#8212;&#8201;finds persons matching KEYWORD in their name or matching specified tags and group under <em>grp1</em></p>
+</li>
+<li>
+<p><code>group [g/grp1] join g/grp2 g/grp3</code>&#8201;&#8212;&#8201;groups the <strong>union</strong> of <em>grp2</em> and <em>grp3</em> under <em>grp1</em></p>
+</li>
+<li>
+<p><code>group [g/grp1] and g/grp2 g/grp3</code>&#8201;&#8212;&#8201;groups the <strong>intersection</strong> of <em>grp2</em> and <em>grp3</em> under <em>grp1</em></p>
+</li>
+<li>
+<p><code>group [g/grp1] show</code>&#8201;&#8212;&#8201;displays students from <em>grp1</em> in the GUI</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>g/grp1 defaults to <em>default</em> if omitted</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>group find t/friends</code>&#8201;&#8212;&#8201;adds all students with tag <em>t/friends</em> under <em>g/default</em></p>
+</li>
+<li>
+<p><code>group g/abc find t/colleagues</code>&#8201;&#8212;&#8201;groups all students with tag <em>t/colleagues</em> under <em>g/abc</em></p>
+</li>
+<li>
+<p><code>group join g/a g/b</code>&#8201;&#8212;&#8201;groups students in either <em>g/a</em> or <em>g/b</em> under <em>g/default</em> (union of a and b)</p>
+</li>
+<li>
+<p><code>group and g/a g/b</code>&#8201;&#8212;&#8201;groups students in both <em>g/a</em> and <em>g/b</em> under <em>g/default</em> (intersection of a and b)</p>
+</li>
+<li>
+<p><code>group g/test show</code>&#8201;&#8212;&#8201;shows students grouped under <em>g/test</em> in the GUI</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tag-students-code-tag-code"><a class="link" href="#tag-students-code-tag-code">Tag Students: <code>tag</code></a></h3>
+<div class="paragraph">
+<p>Adds, sets or deletes tags from students (by index or by name).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag add|set|del index|g/group [t/tags&#8230;&#8203;]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>tag add 1 t/tut1 // Adds the tag "tut1" to first person in list
+tag set 1 t/tut1 // Removes all tags from first person in list and adds tag "tut1"
+tag del 1 t/tut1 // Removes the tag "tut1" to first person in list (does not do anything if supplied tag is not found)
+
+tag add g/students t/cs2103 // Adds the tag "cs2103" to all students in the group named "students"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command accepts any number of tags (including 0), using <code>tag set</code> with no tags supplied will clear all tags</p>
+</li>
+<li>
+<p>The command will not fail even if the supplied tag is already present in the case of <code>tag add</code> and <code>tag set</code></p>
+</li>
+<li>
+<p>The command will not fail even if the supplied tag is absent in the case of <code>tag delete</code></p>
+</li>
+<li>
+<p>The command will still display a success message if the above cases occur</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="group-feature"><a class="link" href="#group-feature">Group feature</a></h3>
+<div class="paragraph">
+<p>A <code>Group</code> allows tutors to manage students easily without typing a command for each student.
+It is designed to work with the existing <code>Tag</code> system, and designed with commands such as <code>attendance</code> and <code>email</code> in mind.
+It is session based, meaning that groups are not stored in the data files after the app has closed, and is not intended as a replacement for <code>Tag</code>.</p>
+</div>
+<div class="paragraph">
+<p>Note: was previously called <code>Mark</code></p>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>Each <code>Group</code> represents a collection of unique students, stored with a <code>Set&lt;Student&gt;</code> and exposes getter and setter methods, as well as methods for the manipulation of <code>Groups</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/GroupClassDiagram.png" alt="GroupClassDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Groups are maintained by <code>ModelManager</code>, which is responsible for updating, storing and providing the correct <code>Group</code> for commands.</p>
+</div>
+<div class="paragraph">
+<p>Commands relating to the creation and manipulations of Groups are parsed by <code>GroupCommandParser</code>, which then returns the appropriate <code>GroupSubCommand</code> to be executed.
+It is designed in this way to be easily extensible in the future as more sub-commands are added.</p>
+</div>
+<div class="paragraph">
+<p>The commands adhere to the following pattern:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>group [g/m1] &lt;subcommand&gt; &lt;arguments&gt;`</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The arguments <code>g/m1</code> may be optional in some cases and default to <code>Group.DEFAULT_NAME</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sub-commands"><a class="link" href="#sub-commands">Sub-commands</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find name</code>&#8201;&#8212;&#8201;groups Students matched by name</p>
+</li>
+<li>
+<p><code>find t/tag&#8230;&#8203;</code>&#8201;&#8212;&#8201;groups Students matched by tags</p>
+</li>
+<li>
+<p><code>join g/m2 [g/m3]</code>&#8201;&#8212;&#8201;returns union of m2 and m3</p>
+</li>
+<li>
+<p><code>and g/m2 [g/m3]</code>&#8201;&#8212;&#8201;returns intersection of m2 and m3</p>
+</li>
+<li>
+<p><code>show</code>&#8201;&#8212;&#8201;shows grouped Students in GUI</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note: The base command by itself does not do anything, i.e. <code>group</code> will not do anything but display an error</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/GroupCommandClassDiagram.png" alt="GroupCommandClassDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="planned-sub-commands-2-0"><a class="link" href="#planned-sub-commands-2-0">Planned Sub-commands (2.0)</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>index &lt;indexes&gt;</code>&#8201;&#8212;&#8201;groups students by index, separated by space, e.g. <code>group index 1 3 4 5</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="parser-flowchart"><a class="link" href="#parser-flowchart">Parser Flowchart</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/GroupCommandParserFlowchart.png" alt="GroupCommandParserFlowchart">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="execution"><a class="link" href="#execution">Execution</a></h4>
+<div class="paragraph">
+<p>The following sequence diagram illustrates how <code>GroupCommands</code> are processed and executed</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/GroupCommandSeqDiagram.png" alt="GroupCommandSeqDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="use-cases"><a class="link" href="#use-cases">Use Cases:</a></h4>
+<div class="paragraph">
+<p>Suppose a tutor wants to mark the attendance of all students from tutorial groups W13 and W14.</p>
+</div>
+<div class="paragraph">
+<p>Instead of:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>find t/W13
+attendance 1 at/Present
+attendance 2 at/Present
+attendance 3 at/Present
+...
+find t/W14
+attendance 1 at/Present
+attendance 2 at/Present
+attendance 3 at/Present
+...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The tutor can type in:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>group g/a find t/W13` // adds students tagged with "W13" to group g/a
+group g/b find t/W14` // adds students tagged with "W14" to group g/b
+group g/res join g/a g/b` // merges students in g/a and g/b to group g/res
+attendance g/res at/Present` // updates the grouped students' attendance</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Suppose the tutor then wants to send an email to the aforementioned group of students.
+They can do that with a simple command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>email g/res s/subject b/body (group email command coming in V2.0)</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tracking-students"><a class="link" href="#tracking-students">Tracking students</a></h4>
+<div class="paragraph">
+<p>The application is implemented with immutable <code>Student</code> objects.
+As a result, when a student is edited, a new <code>Student</code> instance is created with the updated fields and stored in the <code>AddressBook</code>.
+This causes the stored <code>Student</code> objects in existing <code>Groups</code> to be outdated, and attempts to use those objects will lead to a crash.</p>
+</div>
+<div class="paragraph">
+<p>To solve this issue, after every command where student(s) are changed, the stored <code>Groups</code> will be updated as depicted in the activity diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UpdateStudentsActivityDiagram.png" alt="UpdateStudentsActivityDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-for-storing-students"><a class="link" href="#aspect-data-structure-for-storing-students">Aspect: Data structure for storing Students</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>HashSet (Current)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Built in duplicates prevention, easier implementation of methods, faster</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>ArrayList</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Order is preserved, able to convert to ObservableList easily</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ordering was not as important as duplicates prevention and the fact that many of the methods are designed for a Set.
+Efficiency is a nice bonus but not significant as the expected number of Student entries is well below the magnitude where the difference in speed is significant.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-command-format"><a class="link" href="#aspect-command-format">Aspect: Command format</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Separate commands for subcommands</p>
+<div class="ulist">
+<ul>
+<li>
+<p>separate commands into <code>group-find</code>, <code>group-show</code> etc.</p>
+</li>
+<li>
+<p>Pros: Easy parsing, easy to understand, beginner friendly</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Single command (Current)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>single root command <code>group</code> with subcommands <code>group find</code>, <code>group show</code></p>
+</li>
+<li>
+<p>Pros: More usable, intuitive, minimize code duplication, better extensiblity</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Natural language</p>
+<div class="ulist">
+<ul>
+<li>
+<p>single "root" command but parsed intelligently using keywords such as <code>to</code> and <code>with</code></p>
+</li>
+<li>
+<p>e.g. <code>group students with tags t/tut1 to g/destination</code>, <code>group g/group1 and g/group2 to g/group3</code></p>
+</li>
+<li>
+<p>Pros: Highly intuitive, beginner friendly</p>
+</li>
+<li>
+<p>Cons: Difficult to implement and exhaustively test</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Initially, the single command approach was thought to be better as I had expected users with CLI experience to be familiar with this style of commands, and will provide greater degree of customization of commands (due to the different combinations of arguments available). Furthermore, as the subcommands have very similar argument patterns, I believed that it would make more sense to consolidate the parsing code in one place.</p>
+</div>
+<div class="paragraph">
+<p>However, feedback from trials suggest that some users prefer self-explanatory command names e.g. <code>group-by-tag-to t/tagName g/destinationGroup</code> over <code>group g/destinationGroup find t/tagName</code>.
+Despite this, as a developer I prefer the latter.</p>
+</div>
+<div class="paragraph">
+<p>I briefly considered a natural language parser but decided that it was not worth the effort.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:39:42 UTC</div></div></div></body></html>
