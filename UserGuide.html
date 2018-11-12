@@ -19,21 +19,20 @@
 <li><a href="#emailing-a-student-code-email-code">3.4. Emailing a student: <code>email</code></a></li>
 <li><a href="#editing-a-student-code-edit-code">3.5. Editing a student : <code>edit</code></a></li>
 <li><a href="#marking-attendance-code-attendance-code">3.6. Marking attendance: <code>attendance</code></a></li>
-<li><a href="#schedule-events-code-schedule-code">3.7. Schedule events: <code>schedule</code></a></li>
-<li><a href="#cancel-event-code-cancel-code">3.8. Cancel event: <code>cancel</code></a></li>
-<li><a href="#locating-students-by-name-tag-code-find-code">3.9. Locating students by name/tag: <code>find</code></a></li>
-<li><a href="#group-code-group-code">3.10. Group: <code>group</code></a></li>
-<li><a href="#tag-students-code-tag-code">3.11. Tag Students: <code>tag</code></a></li>
-<li><a href="#deleting-a-student-code-delete-code">3.12. Deleting a student : <code>delete</code></a></li>
-<li><a href="#selecting-a-student-code-select-code">3.13. Selecting a student : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.14. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.15. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.16. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.17. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.18. Exiting the program : <code>exit</code></a></li>
-<li><a href="#graph-students-code-graph-code">3.19. Graph Students: <code>graph</code></a></li>
+<li><a href="#graph-students-code-graph-code">3.7. Graph Students: <code>graph</code></a></li>
+<li><a href="#schedule-events-code-schedule-code">3.8. Schedule events: <code>schedule</code></a></li>
+<li><a href="#cancel-event-code-cancel-code">3.9. Cancel event: <code>cancel</code></a></li>
+<li><a href="#locating-students-by-name-tag-code-find-code">3.10. Locating students by name/tag: <code>find</code></a></li>
+<li><a href="#group-code-group-code">3.11. Group: <code>group</code></a></li>
+<li><a href="#tag-students-code-tag-code">3.12. Tag Students: <code>tag</code></a></li>
+<li><a href="#deleting-a-student-code-delete-code">3.13. Deleting a student : <code>delete</code></a></li>
+<li><a href="#selecting-a-student-code-select-code">3.14. Selecting a student : <code>select</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.15. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.16. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.17. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.18. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.19. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.20. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.21. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -256,7 +255,7 @@ Edits the name of the 2nd student to be <code>Betsy Crower</code> and clears all
 <h3 id="marking-attendance-code-attendance-code"><a class="link" href="#marking-attendance-code-attendance-code">3.6. Marking attendance: <code>attendance</code></a></h3>
 <div class="paragraph">
 <p>Allows the user to mark the attendance of students using the index number as well as group name.<br>
-Format: <code>attendance INDEX_NUMBER at/ATTENDANCE</code> or <code>attendance g/GROUP_NAME at/ATTENDANCE</code></p>
+Format: <code>attendance INDEX at/ATTENDANCE</code> or <code>attendance g/GROUP_NAME at/ATTENDANCE</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -302,570 +301,7 @@ Marks the attendance of all the students in group-tutorial1 as present.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule-events-code-schedule-code"><a class="link" href="#schedule-events-code-schedule-code">3.7. Schedule events: <code>schedule</code></a></h3>
-<div class="paragraph">
-<p>Schedules an event for the user to keep track of.<br>
-Format: <code>schedule event/EVENT_NAME date/DATE start/TIME_START end/TIME_END [descr/DESCRIPTION]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The event will be scheduled and reflected on the user&#8217;s list of events.</p>
-</li>
-<li>
-<p>Events with the same event name, date, start time, and end time, will be considered as duplicates, and will not be scheduled again.</p>
-</li>
-<li>
-<p>Invalid dates and times will not be scheduled e.g. <code>32-12-2018</code> will not schedule any event. Also, the year range is between 1600 and 9999.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule event/CS2103 Tutorial 11 date/14-11-2018 start/13:00 end/14:00 descr/Final Product Demo</code><br>
-Schedules an event named <code>CS2103 Tutorial 11</code> on 14-11-2018 from 1:00pm to 2:00pm.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/ScheduleExampleForUG.png" alt="ScheduleExampleForUG" width="700">
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="cancel-event-code-cancel-code"><a class="link" href="#cancel-event-code-cancel-code">3.8. Cancel event: <code>cancel</code></a></h3>
-<div class="paragraph">
-<p>Cancels an event already in the calendar.<br>
-Format: <code>cancel event/EVENT_NAME date/DATE start/TIME_START end/TIME_END</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The event will be cancelled and be deleted from the user&#8217;s list of events.</p>
-</li>
-<li>
-<p>Like <code>schedule</code>, the format is the same, and the event with the exact details must exist within the calendar.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>cancel event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code><br>
-Cancels the event named <code>CS2103 Consultation</code> on 24-9-2019 from 6:00pm to 7:00pm that is present in the calendar.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="locating-students-by-name-tag-code-find-code"><a class="link" href="#locating-students-by-name-tag-code-find-code">3.9. Locating students by name/tag: <code>find</code></a></h3>
-<div class="paragraph">
-<p>Finds students whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Students matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Finds students tagged with specified tag.<br>
-Format: <code>find t/TAG [MORE_TAGS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Tags are case sensitive</p>
-</li>
-<li>
-<p>The order of the tags does not matter</p>
-</li>
-<li>
-<p>Students matching at least one tag will be returned (i.e. <code>OR</code> search)</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any student having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
-</li>
-<li>
-<p><code>find t/students</code><br>
-Returns students tagged with <code>t/students</code></p>
-</li>
-<li>
-<p><code>find t/students t/colleagues</code><br>
-Returns students tagged with <code>t/students</code> or <code>t/colleagues</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="group-code-group-code"><a class="link" href="#group-code-group-code">3.10. Group: <code>group</code></a></h3>
-<div class="paragraph">
-<p>A <code>Group</code> represents a group of <code>Students</code> in the app. Some commands accept <code>Groups</code> as an alternative to <code>INDEX</code> as a parameter to perform batch operations instead of individual operations.</p>
-</div>
-<div class="sect3">
-<h4 id="group-creation"><a class="link" href="#group-creation">3.10.1. Group Creation</a></h4>
-<div class="paragraph">
-<p>Format: <code>group [g/grpName] find t/TAGNAME</code> or <code>group [g/grpName] find KEYWORD</code></p>
-</div>
-<div class="paragraph">
-<p>This creates a Group containing the Students returned by the find command with the supplied arguments.</p>
-</div>
-<div class="paragraph">
-<p><code>group find t/friends</code> will find all students in the Address Book tagged with "friends" and add them to a group.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>[v2.0] <code>group index INDEX&#8230;&#8203;</code> will take a series of indices as arguments and group the students represented by the indices</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>// assume that the current display shows {Adam, Bob, Charles, Dylan}
-group g/grp1 index 1 4
-// g/grp1 will then contain {Adam, Dylan} since Adam is index 1 and Dylan is index 4 on the currently displayed list</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="named-groups"><a class="link" href="#named-groups">3.10.2. Named Groups</a></h4>
-<div class="paragraph">
-<p>Groups can be named by using the prefix <code>g/GROUPNAME</code>. If not specified, the name of the created Group will default to "g/default",
-i.e. <code>group find t/friends</code> is equivalent to <code>group g/default find t/friends</code></p>
-</div>
-<div class="paragraph">
-<p>E.g. <code>group g/myGroupName find t/friends</code> will add the Students tagged with "friends" to a Group called "myGroupName"</p>
-</div>
-<div class="paragraph">
-<p>Note: Group names must be alphanumeric and not contain spaces.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="manipulating-groups"><a class="link" href="#manipulating-groups">3.10.3. Manipulating Groups</a></h4>
-<div class="paragraph">
-<p>Groups are able to be manipulated to expand or contract the selection to fit the users needs</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>join</code> will take two groups as arguments and create a new group that contains students from either of the groups</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>// assume that g/grp1 contains {Adam, Bob}
-// g/grp2 contains {Bob, Charles}
-group g/grp3 join g/grp1 g/grp2
-// g/grp3 will contain {Adam, Bob, Charles}</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>and</code> will take two groups as arguments and create a new group that contains only students that are in both of the groups</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>// assume that g/grp1 contains {Adam, Bob}
-// g/grp2 contains {Bob, Charles}
-group g/grp3 and g/grp1 g/grp2
-// g/grp3 will contain {Bob} since Bob is the only student in g/grp1 and g/grp2</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>[v2.0] <code>complement</code> will take one groups as an argument and create a new group that contains every student except those in the supplied group</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>// assume that there are a total of 3 entries, {Adam, Bob, Charles}
-// and g/grp1 contains {Bob}
-group g/grp2 complement g/grp1
-// g/grp2 will then contain {Adam, Charles} since Bob is in g/grp1 and will thus be excluded</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>General format: <code>group [g/DEST_GROUP] &lt;operation&gt; g/OPERANDGROUP1 [g/OPERANDGROUP2]</code></p>
-</div>
-<div class="paragraph">
-<p>Note: The first operand is compulsory while the second operand is optional and will default to "g/default"</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="displaying-groups"><a class="link" href="#displaying-groups">3.10.4. Displaying Groups</a></h4>
-<div class="paragraph">
-<p>The Students in a Group can be shown in the GUI with the following command:</p>
-</div>
-<div class="paragraph">
-<p><code>group [g/GROUPTOBESHOWN] show</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="interactions-with-code-undo-code-and-code-redo-code"><a class="link" href="#interactions-with-code-undo-code-and-code-redo-code">3.10.5. Interactions with <code>undo</code> and <code>redo</code></a></h4>
-<div class="paragraph">
-<p>Due to the way <code>undo</code> and <code>redo</code> are implemented, Groups that are changed as a result of these commands will not behave as expected, the students that are changed will be removed from the Group.</p>
-</div>
-<div class="paragraph">
-<p>For example,</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>// g/grp1 contains {Adam, Bob}
-delete 1 // delete Adam
-// g/grp1 will now only contain {Bob}
-undo // restores Adam to the addressbook
-// g/grp1 will not be restored to the previous state and will still only contain {Bob}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="reference"><a class="link" href="#reference">3.10.6. Reference</a></h4>
-<div class="paragraph">
-<p>(Implemented as of 1.4)</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>group [g/grp1] find &lt;KEYWORD|t/TAG&#8230;&#8203;&gt;</code>&#8201;&#8212;&#8201;finds persons matching KEYWORD in their name or matching specified tags and group under <em>grp1</em></p>
-</li>
-<li>
-<p><code>group [g/grp1] join g/grp2 g/grp3</code>&#8201;&#8212;&#8201;groups the <strong>union</strong> of <em>grp2</em> and <em>grp3</em> under <em>grp1</em></p>
-</li>
-<li>
-<p><code>group [g/grp1] and g/grp2 g/grp3</code>&#8201;&#8212;&#8201;groups the <strong>intersection</strong> of <em>grp2</em> and <em>grp3</em> under <em>grp1</em></p>
-</li>
-<li>
-<p><code>group [g/grp1] show</code>&#8201;&#8212;&#8201;displays students from <em>grp1</em> in the GUI</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Notes:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>g/grp1 defaults to <em>default</em> if omitted</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>group find t/friends</code>&#8201;&#8212;&#8201;adds all students with tag <em>t/friends</em> under <em>g/default</em></p>
-</li>
-<li>
-<p><code>group g/abc find t/colleagues</code>&#8201;&#8212;&#8201;groups all students with tag <em>t/colleagues</em> under <em>g/abc</em></p>
-</li>
-<li>
-<p><code>group join g/a g/b</code>&#8201;&#8212;&#8201;groups students in either <em>g/a</em> or <em>g/b</em> under <em>g/default</em> (union of a and b)</p>
-</li>
-<li>
-<p><code>group and g/a g/b</code>&#8201;&#8212;&#8201;groups students in both <em>g/a</em> and <em>g/b</em> under <em>g/default</em> (intersection of a and b)</p>
-</li>
-<li>
-<p><code>group g/test show</code>&#8201;&#8212;&#8201;shows students grouped under <em>g/test</em> in the GUI</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="tag-students-code-tag-code"><a class="link" href="#tag-students-code-tag-code">3.11. Tag Students: <code>tag</code></a></h3>
-<div class="paragraph">
-<p>Adds, sets or deletes tags from students (by index or by name).</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>tag add|set|del index|g/group [t/tags&#8230;&#8203;]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>tag add 1 t/tut1 // Adds the tag "tut1" to first person in list
-tag set 1 t/tut1 // Removes all tags from first person in list and adds tag "tut1"
-tag del 1 t/tut1 // Removes the tag "tut1" to first person in list (does not do anything if supplied tag is not found)
-
-tag add g/students t/cs2103 // Adds the tag "cs2103" to all students in the group named "students"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The command accepts any number of tags (including 0), using <code>tag set</code> with no tags supplied will clear all tags</p>
-</li>
-<li>
-<p>The command will not fail even if the supplied tag is already present in the case of <code>tag add</code> and <code>tag set</code></p>
-</li>
-<li>
-<p>The command will not fail even if the supplied tag is absent in the case of <code>tag delete</code></p>
-</li>
-<li>
-<p>The command will still display a success message if the above cases occur</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.12. Deleting a student : <code>delete</code></a></h3>
-<div class="paragraph">
-<p>Deletes the specified student from the address book.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the student at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed student list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd student in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st student in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.13. Selecting a student : <code>select</code></a></h3>
-<div class="paragraph">
-<p>Selects the student identified by the index number used in the displayed student list.<br>
-Format: <code>select INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the student and loads the Google search page the student at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed student list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd student in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>select 1</code><br>
-Selects the 1st student in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.14. Listing entered commands : <code>history</code></a></h3>
-<div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.15. Undoing previous command : <code>undo</code></a></h3>
-<div class="paragraph">
-<p>Restores the address book and/or calendar to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>) or the calendar&#8217;s content (<code>schedule</code>, <code>cancel</code>, and <code>clear</code>)</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>schedule event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code><br>
-<code>undo</code> (reverses the <code>schedule event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.16. Redoing the previously undone command : <code>redo</code></a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.17. Clearing all entries : <code>clear</code></a></h3>
-<div class="paragraph">
-<p>Clears all entries from the address book and calendar.<br>
-Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.18. Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="graph-students-code-graph-code"><a class="link" href="#graph-students-code-graph-code">3.19. Graph Students: <code>graph</code></a></h3>
+<h3 id="graph-students-code-graph-code"><a class="link" href="#graph-students-code-graph-code">3.7. Graph Students: <code>graph</code></a></h3>
 <div class="paragraph">
 <p>Graph students attendance whose names contain any of the given keywords.<br>
 Format: <code>graph KEYWORD [MORE_KEYWORDS]</code></p>
@@ -939,16 +375,573 @@ Returns attendance graph of students tagged with <code>t/students</code> or <cod
 </div>
 </div>
 <div class="sect2">
+<h3 id="schedule-events-code-schedule-code"><a class="link" href="#schedule-events-code-schedule-code">3.8. Schedule events: <code>schedule</code></a></h3>
+<div class="paragraph">
+<p>Schedules an event for the user to keep track of.<br>
+Format: <code>schedule event/EVENT_NAME date/DATE start/TIME_START end/TIME_END [descr/DESCRIPTION]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The event will be scheduled and reflected on the user&#8217;s list of events.</p>
+</li>
+<li>
+<p>Events with the same event name, date, start time, and end time, will be considered as duplicates, and will not be scheduled again.</p>
+</li>
+<li>
+<p>Invalid dates and times will not be scheduled e.g. <code>32-12-2018</code> will not schedule any event. Also, the year range is between 1600 and 9999.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule event/CS2103 Tutorial 11 date/14-11-2018 start/13:00 end/14:00 descr/Final Product Demo</code><br>
+Schedules an event named <code>CS2103 Tutorial 11</code> on 14-11-2018 from 1:00pm to 2:00pm.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleExampleForUG.png" alt="ScheduleExampleForUG" width="700">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cancel-event-code-cancel-code"><a class="link" href="#cancel-event-code-cancel-code">3.9. Cancel event: <code>cancel</code></a></h3>
+<div class="paragraph">
+<p>Cancels an event already in the calendar.<br>
+Format: <code>cancel event/EVENT_NAME date/DATE start/TIME_START end/TIME_END</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The event will be cancelled and be deleted from the user&#8217;s list of events.</p>
+</li>
+<li>
+<p>Like <code>schedule</code>, the format is the same, and the event with the exact details must exist within the calendar.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>cancel event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code><br>
+Cancels the event named <code>CS2103 Consultation</code> on 24-9-2019 from 6:00pm to 7:00pm that is present in the calendar.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locating-students-by-name-tag-code-find-code"><a class="link" href="#locating-students-by-name-tag-code-find-code">3.10. Locating students by name/tag: <code>find</code></a></h3>
+<div class="paragraph">
+<p>Finds students whose names contain any of the given keywords.<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only the name is searched.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Students matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Finds students tagged with specified tag.<br>
+Format: <code>find t/TAG [MORE_TAGS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Tags are case sensitive</p>
+</li>
+<li>
+<p>The order of the tags does not matter</p>
+</li>
+<li>
+<p>Students matching at least one tag will be returned (i.e. <code>OR</code> search)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find John</code><br>
+Returns <code>john</code> and <code>John Doe</code></p>
+</li>
+<li>
+<p><code>find Betsy Tim John</code><br>
+Returns any student having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+<li>
+<p><code>find t/students</code><br>
+Returns students tagged with <code>t/students</code></p>
+</li>
+<li>
+<p><code>find t/students t/colleagues</code><br>
+Returns students tagged with <code>t/students</code> or <code>t/colleagues</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="group-code-group-code"><a class="link" href="#group-code-group-code">3.11. Group: <code>group</code></a></h3>
+<div class="paragraph">
+<p>A <code>Group</code> represents a group of <code>Students</code> in the app. Some commands accept <code>Groups</code> as an alternative to <code>INDEX</code> as a parameter to perform batch operations instead of individual operations.</p>
+</div>
+<div class="sect3">
+<h4 id="group-creation"><a class="link" href="#group-creation">3.11.1. Group Creation</a></h4>
+<div class="paragraph">
+<p>Format: <code>group [g/grpName] find t/TAGNAME</code> or <code>group [g/grpName] find KEYWORD</code></p>
+</div>
+<div class="paragraph">
+<p>This creates a Group containing the Students returned by the find command with the supplied arguments.</p>
+</div>
+<div class="paragraph">
+<p><code>group find t/friends</code> will find all students in the Address Book tagged with "friends" and add them to a group.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[v2.0] <code>group index INDEX&#8230;&#8203;</code> will take a series of indices as arguments and group the students represented by the indices</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// assume that the current display shows {Adam, Bob, Charles, Dylan}
+group g/grp1 index 1 4
+// g/grp1 will then contain {Adam, Dylan} since Adam is index 1 and Dylan is index 4 on the currently displayed list</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="named-groups"><a class="link" href="#named-groups">3.11.2. Named Groups</a></h4>
+<div class="paragraph">
+<p>Groups can be named by using the prefix <code>g/GROUPNAME</code>. If not specified, the name of the created Group will default to "g/default",
+i.e. <code>group find t/friends</code> is equivalent to <code>group g/default find t/friends</code></p>
+</div>
+<div class="paragraph">
+<p>E.g. <code>group g/myGroupName find t/friends</code> will add the Students tagged with "friends" to a Group called "myGroupName"</p>
+</div>
+<div class="paragraph">
+<p>Note: Group names must be alphanumeric and not contain spaces.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="manipulating-groups"><a class="link" href="#manipulating-groups">3.11.3. Manipulating Groups</a></h4>
+<div class="paragraph">
+<p>Groups are able to be manipulated to expand or contract the selection to fit the users needs</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>join</code> will take two groups as arguments and create a new group that contains students from either of the groups</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// assume that g/grp1 contains {Adam, Bob}
+// g/grp2 contains {Bob, Charles}
+group g/grp3 join g/grp1 g/grp2
+// g/grp3 will contain {Adam, Bob, Charles}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>and</code> will take two groups as arguments and create a new group that contains only students that are in both of the groups</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// assume that g/grp1 contains {Adam, Bob}
+// g/grp2 contains {Bob, Charles}
+group g/grp3 and g/grp1 g/grp2
+// g/grp3 will contain {Bob} since Bob is the only student in g/grp1 and g/grp2</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[v2.0] <code>complement</code> will take one groups as an argument and create a new group that contains every student except those in the supplied group</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// assume that there are a total of 3 entries, {Adam, Bob, Charles}
+// and g/grp1 contains {Bob}
+group g/grp2 complement g/grp1
+// g/grp2 will then contain {Adam, Charles} since Bob is in g/grp1 and will thus be excluded</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>General format: <code>group [g/DEST_GROUP] &lt;operation&gt; g/OPERANDGROUP1 [g/OPERANDGROUP2]</code></p>
+</div>
+<div class="paragraph">
+<p>Note: The first operand is compulsory while the second operand is optional and will default to "g/default"</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="displaying-groups"><a class="link" href="#displaying-groups">3.11.4. Displaying Groups</a></h4>
+<div class="paragraph">
+<p>The Students in a Group can be shown in the GUI with the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>group [g/GROUPTOBESHOWN] show</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="interactions-with-code-undo-code-and-code-redo-code"><a class="link" href="#interactions-with-code-undo-code-and-code-redo-code">3.11.5. Interactions with <code>undo</code> and <code>redo</code></a></h4>
+<div class="paragraph">
+<p>Due to the way <code>undo</code> and <code>redo</code> are implemented, Groups that are changed as a result of these commands will not behave as expected, the students that are changed will be removed from the Group.</p>
+</div>
+<div class="paragraph">
+<p>For example,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>// g/grp1 contains {Adam, Bob}
+delete 1 // delete Adam
+// g/grp1 will now only contain {Bob}
+undo // restores Adam to the addressbook
+// g/grp1 will not be restored to the previous state and will still only contain {Bob}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reference"><a class="link" href="#reference">3.11.6. Reference</a></h4>
+<div class="paragraph">
+<p>(Implemented as of 1.4)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>group [g/grp1] find &lt;KEYWORD|t/TAG&#8230;&#8203;&gt;</code>&#8201;&#8212;&#8201;finds persons matching KEYWORD in their name or matching specified tags and group under <em>grp1</em></p>
+</li>
+<li>
+<p><code>group [g/grp1] join g/grp2 g/grp3</code>&#8201;&#8212;&#8201;groups the <strong>union</strong> of <em>grp2</em> and <em>grp3</em> under <em>grp1</em></p>
+</li>
+<li>
+<p><code>group [g/grp1] and g/grp2 g/grp3</code>&#8201;&#8212;&#8201;groups the <strong>intersection</strong> of <em>grp2</em> and <em>grp3</em> under <em>grp1</em></p>
+</li>
+<li>
+<p><code>group [g/grp1] show</code>&#8201;&#8212;&#8201;displays students from <em>grp1</em> in the GUI</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>g/grp1 defaults to <em>default</em> if omitted</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>group find t/friends</code>&#8201;&#8212;&#8201;adds all students with tag <em>t/friends</em> under <em>g/default</em></p>
+</li>
+<li>
+<p><code>group g/abc find t/colleagues</code>&#8201;&#8212;&#8201;groups all students with tag <em>t/colleagues</em> under <em>g/abc</em></p>
+</li>
+<li>
+<p><code>group join g/a g/b</code>&#8201;&#8212;&#8201;groups students in either <em>g/a</em> or <em>g/b</em> under <em>g/default</em> (union of a and b)</p>
+</li>
+<li>
+<p><code>group and g/a g/b</code>&#8201;&#8212;&#8201;groups students in both <em>g/a</em> and <em>g/b</em> under <em>g/default</em> (intersection of a and b)</p>
+</li>
+<li>
+<p><code>group g/test show</code>&#8201;&#8212;&#8201;shows students grouped under <em>g/test</em> in the GUI</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tag-students-code-tag-code"><a class="link" href="#tag-students-code-tag-code">3.12. Tag Students: <code>tag</code></a></h3>
+<div class="paragraph">
+<p>Adds, sets or deletes tags from students (by index or by name).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag add|set|del index|g/group [t/tags&#8230;&#8203;]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>tag add 1 t/tut1 // Adds the tag "tut1" to first person in list
+tag set 1 t/tut1 // Removes all tags from first person in list and adds tag "tut1"
+tag del 1 t/tut1 // Removes the tag "tut1" to first person in list (does not do anything if supplied tag is not found)
+
+tag add g/students t/cs2103 // Adds the tag "cs2103" to all students in the group named "students"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command accepts any number of tags (including 0), using <code>tag set</code> with no tags supplied will clear all tags</p>
+</li>
+<li>
+<p>The command will not fail even if the supplied tag is already present in the case of <code>tag add</code> and <code>tag set</code></p>
+</li>
+<li>
+<p>The command will not fail even if the supplied tag is absent in the case of <code>tag delete</code></p>
+</li>
+<li>
+<p>The command will still display a success message if the above cases occur</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.13. Deleting a student : <code>delete</code></a></h3>
+<div class="paragraph">
+<p>Deletes the specified student from the address book.<br>
+Format: <code>delete INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the student at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed student list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>delete 2</code><br>
+Deletes the 2nd student in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>delete 1</code><br>
+Deletes the 1st student in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.14. Selecting a student : <code>select</code></a></h3>
+<div class="paragraph">
+<p>Selects the student identified by the index number used in the displayed student list.<br>
+Format: <code>select INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the student and loads the Google search page the student at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed student list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>select 2</code><br>
+Selects the 2nd student in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>select 1</code><br>
+Selects the 1st student in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.15. Listing entered commands : <code>history</code></a></h3>
+<div class="paragraph">
+<p>Lists all the commands that you have entered in reverse chronological order.<br>
+Format: <code>history</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.16. Undoing previous command : <code>undo</code></a></h3>
+<div class="paragraph">
+<p>Restores the address book and/or calendar to the state before the previous <em>undoable</em> command was executed.<br>
+Format: <code>undo</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>) or the calendar&#8217;s content (<code>schedule</code>, <code>cancel</code>, and <code>clear</code>)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>list</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>select 1</code><br>
+<code>list</code><br>
+<code>undo</code><br>
+The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>schedule event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code><br>
+<code>undo</code> (reverses the <code>schedule event/CS2103 Consultation date/24-9-2019 start/18:00 end/19:00</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.17. Redoing the previously undone command : <code>redo</code></a></h3>
+<div class="paragraph">
+<p>Reverses the most recent <code>undo</code> command.<br>
+Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>redo</code><br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.18. Clearing all entries : <code>clear</code></a></h3>
+<div class="paragraph">
+<p>Clears all entries from the address book and calendar.<br>
+Format: <code>clear</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.19. Exiting the program : <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits the program.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.20. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.21. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
@@ -1046,4 +1039,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:50:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:51:51 UTC</div></div></div></body></html>
