@@ -75,9 +75,10 @@
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-student">F.2. Deleting a student</a></li>
 <li><a href="#saving-data">F.3. Saving data</a></li>
-<li><a href="#groups">F.4. Groups</a></li>
-<li><a href="#marking-attendance-of-a-student-s">F.5. Marking Attendance of a student(s)</a></li>
-<li><a href="#emailing-a-student">F.6. Emailing a student</a></li>
+<li><a href="#scheduling-of-an-event">F.4. Scheduling of an event</a></li>
+<li><a href="#groups">F.5. Groups</a></li>
+<li><a href="#marking-attendance-of-a-student-s">F.6. Marking Attendance of a student(s)</a></li>
+<li><a href="#emailing-a-student">F.7. Emailing a student</a></li>
 </ul>
 </li>
 </ul>
@@ -434,7 +435,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StudentListPanel</code>, <code>StatusBarFooter</code>, <code>EventListPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StudentListPanel</code>, <code>EventListPanel</code>, <code>GroupListPanel</code>, <code>GraphPanel</code>, <code>StatusBarFooter</code>, etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103-AY1819S1-W13-3/main.git/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -520,7 +521,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>stores the Calendar data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Student&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Student&gt;</code> and <code>ObservableList&lt;Event&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -778,7 +779,7 @@ scheduled. On startup, the calendar will scroll to the first upcoming event.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ScheduleEventSdForLogic.png" alt="ScheduleEventSdForLogic" width="800">
+<img src="images/ScheduleSequenceDiagram.png" alt="ScheduleSequenceDiagram" width="800">
 </div>
 <div class="title">Figure 15. Logic diagram for <code>schedule EVENT</code> command</div>
 </div>
@@ -942,9 +943,6 @@ interacts as expected with the undo/redo command as well.</p>
 <li>
 <p>Pros: Allows the user to see the entire list of events, past and future.</p>
 </li>
-<li>
-<p>Cons: Will definitely get cluttered over time.</p>
-</li>
 </ul>
 </div>
 </li>
@@ -956,7 +954,7 @@ interacts as expected with the undo/redo command as well.</p>
 <p>Pros: Is a compromise between the alternative 1 and 3.</p>
 </li>
 <li>
-<p>Cons: May make the GUI itself cluttered.</p>
+<p>Cons: Will distract from the focus of the events.</p>
 </li>
 </ul>
 </div>
@@ -975,38 +973,6 @@ interacts as expected with the undo/redo command as well.</p>
 </div>
 </li>
 </ul>
-</div>
-<div class="sect4">
-<h5 id="aspect-how-schedule-handles-the-event-model-and-storage"><a class="link" href="#aspect-how-schedule-handles-the-event-model-and-storage">Aspect: How schedule handles the event model and storage</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Stores the list of events within the same model as the addressbook, but keep
-storage separate.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will be consistent with the implementation of the addressbook, while also ensuring that the storage component
-is distinct.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Store the list of events as its own separate model and separate storage.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will not interfere greatly with the implementation of the addressbook itself</p>
-</li>
-<li>
-<p>Cons: Will be detached from the original architecture</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
 </div>
 </div>
 </div>
@@ -2781,7 +2747,112 @@ Expected: Application launches with a clean data folder (no entries)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="groups"><a class="link" href="#groups">F.4. Groups</a></h3>
+<h3 id="scheduling-of-an-event"><a class="link" href="#scheduling-of-an-event">F.4. Scheduling of an event</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Scheduling an event in the event list</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>schedule event/CS2103 Practical Exam date/16-11-2018 start/16:00 end/18:00 descr/Acceptance testing</code><br>
+Expected: The event with the specified details is scheduled into the calendar. Details of the event are shown. Timestamp in the status bar is updated.<br></p>
+</li>
+<li>
+<p>Test case: <code>schedule event/CS2103 Practical Exam date/16-11-2018 start/16:00 end/18:00 descr/Testing other programs</code><br>
+Expected: No event scheduled. Error message denoting duplicate event (if previous test case has run)<br></p>
+</li>
+<li>
+<p>Test case: <code>schedule event/Tutorial date/16-11-2018 start/12:00 end/13:00</code><br>
+Expected: The event with the specified details (without description) is scheduled into the calendar. Details of the event are shown. Timestamp in the status bar is updated.<br></p>
+</li>
+<li>
+<p>Test case: <code>schedule event/Consultation date/32-11-2018 start/16:00 end/18:00 descr/With Bob</code><br>
+Expected: No event scheduled. Error message denoting invalid date<br></p>
+</li>
+<li>
+<p>Test case: <code>schedule event/CS2103 Tutorial date/15-11-2018 end/12:00 descr/Content review</code><br>
+Expected: No event scheduled. Error message denoting missing parameter.<br></p>
+</li>
+<li>
+<p>Test case: <code>schedule event/CS2103 Practical Exam date/16-11-2018 start/16:00 end/18:00 descr/Acceptance testing</code><br>
+Expected: The event with the specified details are scheduled into the calendar.<br></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cancelling an event in the event list</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The events must exist in the calendar.</p>
+</li>
+<li>
+<p>Test case: <code>cancel event/CS2103 Practical Exam date/16-11-2018 start/16:00 end/18:00</code><br>
+Expected: The event with the specified details is deleted from the calendar. Details of the cancelled event are shown. Timestamp in the status bar is updated.<br></p>
+</li>
+<li>
+<p>Test case: <code>cancel event/tutorial date/16-11-2018 start/25:00 end/18:00</code><br>
+Expected: Error message denoting invalid time. Calendar remains the same.<br></p>
+</li>
+<li>
+<p>Other incorrect cancel commands to try: <code>cancel</code>, <code>cancel e</code> (where e is not in the calendar)
+Expected: Error details shown.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Undoing and Redoing commands between the calendar and address book</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Multiple students in the student list, and the following test cases are carried out in order</p>
+</li>
+<li>
+<p>Test case (set up): <code>schedule event/CS2103 Practical Exam date/16-11-2018 start/16:00 end/18:00 descr/Acceptance testing</code><br>
+Expected: The event with the specified details is scheduled into the calendar. Details of the event are shown. Timestamp in the status bar is updated.<br></p>
+</li>
+<li>
+<p>Test case (set up): <code>delete 1</code><br>
+Expected: First student is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.<br></p>
+</li>
+<li>
+<p>Test case: <code>undo</code><br>
+Expected: Deleted student is added back into the list. Undo success is shown. Timestamp in the status bar is updated.<br></p>
+</li>
+<li>
+<p>Test case: <code>undo</code><br>
+Expected: The event added in the first test case is deleted from the calendar. Details of the event are shown. Timestamp in the status bar is updated.<br></p>
+</li>
+<li>
+<p>Test case: <code>redo</code><br>
+Expected: The event deleted in the previous <code>undo</code> is scheduled back into the calendar. Details of the event are shown. Timestamp in the status bar is updated.<br></p>
+</li>
+<li>
+<p>Incorrect commands to try: <code>undo</code> when no changes have been made, <code>redo</code> when the previous command was not an <code>undo</code> and had changed the calendar/address book.
+Expected: Error details shown.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Clearing the calendar and address book</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>clear</code>
+Expected: The calendar and address book are cleared.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="groups"><a class="link" href="#groups">F.5. Groups</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2887,7 +2958,11 @@ Expected: New group <em>grp1</em> created with 2 students</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="marking-attendance-of-a-student-s"><a class="link" href="#marking-attendance-of-a-student-s">F.5. Marking Attendance of a student(s)</a></h3>
+<h3 id="marking-attendance-of-a-student-s"><a class="link" href="#marking-attendance-of-a-student-s">F.6. Marking Attendance of a student(s)</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Marking attendance</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2954,9 +3029,12 @@ Expected: Error message shown in status bar.</p>
 </li>
 </ol>
 </div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="emailing-a-student"><a class="link" href="#emailing-a-student">F.6. Emailing a student</a></h3>
+<h3 id="emailing-a-student"><a class="link" href="#emailing-a-student">F.7. Emailing a student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2971,7 +3049,7 @@ Expected: Error message shown in status bar.</p>
 Expected: Email sent to student at index '1' and success message shown in status message.</p>
 </li>
 <li>
-<p>Test case: <code>email 1 s/Attendance! b/Your attendance is very good!!</code><br>
+<p>Test case: <code>email 1 s/Attendance! b/Your attendance is very good!!!</code><br>
 Expected: Email sent to student at index '1' and success message shown in status message.</p>
 </li>
 <li>
@@ -2987,7 +3065,7 @@ Expected: No student is emailed. Error details shown in status message.</p>
 Expected: No student is emailed. Error details shown in status message.</p>
 </li>
 <li>
-<p>Other incorrect email commands to try: <code>email</code>, <code>email 1</code>, <code>email 1 s/subject</code>, <code>email x s/subject b/body</code> (where x is larger than the list size)
+<p>Other incorrect email commands to try: <code>email</code>, <code>email 1</code>, <code>email 1 s/subject</code>, <code>email x s/subject b/body</code> (where x is larger than the list size)<br>
 Expected: Similar to previous</p>
 </li>
 </ol>
@@ -2997,4 +3075,4 @@ Expected: Similar to previous</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:39:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:54:48 UTC</div></div></div></body></html>
