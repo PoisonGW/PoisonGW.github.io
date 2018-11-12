@@ -10,8 +10,8 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ConTAct is a desktop application designed to aid teaching assistants by providing them with features that is
-catered specifically for their use while still managing to be all-purpose enough to serve a variety of needs.</p>
+<p>ConTAct is a desktop application designed to help teaching assistants by providing them with multiple features that are
+catered specifically to easing student management.</p>
 </div>
 <div class="paragraph">
 <p>Tutors interact with the application through the CLI, and the GUI is implemented using JavaFX. The app itself is written in Java.</p>
@@ -28,7 +28,7 @@ catered specifically for their use while still managing to be all-purpose enough
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to email a student directly from the application through a command</p>
+<p>What it does: allows the user to email a student directly from the application through an input to the CLI</p>
 </li>
 <li>
 <p>Justification: this feature significantly enhances the product by easing the process of emailing a student,
@@ -38,7 +38,7 @@ making it quicker.</p>
 <p>Highlights: The feature includes a simple <code>email</code> command with which the subject and content can all be set,
 just through a single command. It required an in-depth anaylsis of how working with REST-ful API worked,
 and how to integrate it with a native application. It was a challenge to make it allow any NUS Outlook user be
-able to sign-in with his/her email and send an email to their student.</p>
+able to sign-in with his/her email and send an email to their student. Other challenges included ensuring security, receiving permission from users, and understanding the flow of the authorization-code grant method of getting an access token.</p>
 </li>
 <li>
 <p>Credits: The Outlook API usage online provided by Outlook itself served as a good guidance in implementing this.</p>
@@ -264,6 +264,61 @@ This gathers the email address of the student at index 2, and sets the subject a
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="proposed-additions-for-v2-0"><a class="link" href="#proposed-additions-for-v2-0">Proposed additions for v2.0:</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Emailing an entire group/class through the CLI, using the grouping feature</p>
+</li>
+<li>
+<p>Sending emails with attachments to students</p>
+</li>
+<li>
+<p>Pre-written email templates that the user can just send out to students
+=== Emailing a student</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Emailing a student</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The student must exist on the list, at the correct index. If student does not exist yet, add student first.</p>
+</li>
+<li>
+<p>Test case: <code>email 1 s/Attendance b/Your attendance is good</code><br>
+Expected: Email sent to student at index '1' and success message shown in status message.</p>
+</li>
+<li>
+<p>Test case: <code>email 1 s/Attendance! b/Your attendance is very good!!</code><br>
+Expected: Email sent to student at index '1' and success message shown in status message.</p>
+</li>
+<li>
+<p>Test case: <code>email 0 s/Attendance b/Your attendance is good!</code><br>
+Expected: No student is emailed. Error details shown in status message.</p>
+</li>
+<li>
+<p>Test case: <code>email 1 s/ b/</code><br>
+Expected: No student is emailed. Error details shown in status message.</p>
+</li>
+<li>
+<p>Test case: <code>email 1 x/subject y/body</code><br>
+Expected: No student is emailed. Error details shown in status message.</p>
+</li>
+<li>
+<p>Other incorrect email commands to try: <code>email</code>, <code>email 1</code>, <code>email 1 s/subject</code>, <code>email x s/subject b/body</code> (where x is larger than the list size)
+Expected: Similar to previous</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:31:40 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:14:29 UTC</div></div></div></body></html>
