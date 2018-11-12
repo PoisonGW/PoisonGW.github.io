@@ -261,7 +261,23 @@ Format: <code>attendance INDEX_NUMBER at/ATTENDANCE</code> or <code>attendance g
 <div class="ulist">
 <ul>
 <li>
-<p>The attendance marking as present is done individually, by using the index number of the student. The user can also collectively mark the attendance using the GROUP feature. Then, the user can update the attendance of the students who do not follow the majority specifically. The user can update the attendance of the student/students who are absent as 'absent'/'0' and who are present as 'present'/'1'(any other value updates the attendance to undefined).</p>
+<p>The attendance marking can be done individually, by using the index number of the student.</p>
+</li>
+<li>
+<p>The user can also collectively mark the attendance by specifying the <code>group</code>. Then, the user can update the attendance of the students who do not follow the majority specifically.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The group must exist for the user to update the attendance of the group. If the group does not exist, the user needs to create the required group first. See <code>group</code> feature on how to create a group of students.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The user can update the attendance of the student/students who are absent as 'absent' or '0' and who are present as 'present' or '1' (any other value updates the attendance to undefined).</p>
+</li>
+<li>
+<p>The existing attendance of the student will be overwritten by the user input values.</p>
 </li>
 </ul>
 </div>
@@ -889,4 +905,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 07:23:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 07:59:59 UTC</div></div></div></body></html>

@@ -74,8 +74,9 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-student">F.2. Deleting a student</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
-<li><a href="#emailing-a-student">F.4. Emailing a student</a></li>
+<li><a href="#marking-attendance-of-a-student-students">F.3. Marking Attendance of a student/students</a></li>
+<li><a href="#saving-data">F.4. Saving data</a></li>
+<li><a href="#emailing-a-student">F.5. Emailing a student</a></li>
 </ul>
 </li>
 </ul>
@@ -2685,7 +2686,76 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
+<h3 id="marking-attendance-of-a-student-students"><a class="link" href="#marking-attendance-of-a-student-students">F.3. Marking Attendance of a student/students</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update the attendance of a student or a <code>group</code> of students</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The student must exist on the conTAct list/the <code>group</code> of students must exist. If the student does not exist, add the student first. If the <code>group</code> does not exist, create a <code>group</code> of students with the existing required tag.</p>
+</li>
+<li>
+<p>Test case: <code>attendance 1 at/1</code><br>
+Expected: The attendance of the first student on the list is updated to PRESENT. Success message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance 2 at/0</code><br>
+Expected: The attendance of the second student on the list is updated to ABSENT. Success message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance 3 at/123</code><br>
+Expected: The attendance of the third student on the list is updated to UNDEFIND. Success message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance 4 at/present</code><br>
+Expected: The attendance of the fourth student on the list is updated to PRESENT. Success message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance 5 at/absent</code><br>
+Expected: The attendance of the fifth student on the list is updated to ABSENT. Success message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance 6 at/not here</code><br>
+Expected: The attendance of the sixth student on the list is updated to UNDEFIND. Success message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance 0 at/1</code><br>
+Expected: Invalid index. Error message is shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance 0 at/</code><br>
+Expected: The attendance of the first student on the list is updated to UNDEFIND. Success message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance g/tut2 at/1</code><br>
+Expected: The attendance of all students in <code>group</code> tut2 is updated to PRESENT. Success message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance g/tut1 at/0</code><br>
+Expected: The attendance of all students in <code>group</code> tut1 is updated to ABSENT. Success message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance g/tu1 at/0</code><br>
+Expected: If <code>group</code> does not exist, attendance will not be updated. Error message shown in the status bar.</p>
+</li>
+<li>
+<p>Test case: <code>attendance g/ at/1</code><br>
+Expected: The <code>group</code> name should not be blank, attendance will not be updated. Error message shown in the status bar.</p>
+</li>
+<li>
+<p>Other incorrect commands to try: <code>attendance</code>, <code>attendance a/tut2 b/1</code>, <code>attendance at/1</code>, <code>attendance x at/0</code> (where x is larger than the size of the list)<br>
+Expected: Error message shown in status bar.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">F.4. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2705,7 +2775,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="emailing-a-student"><a class="link" href="#emailing-a-student">F.4. Emailing a student</a></h3>
+<h3 id="emailing-a-student"><a class="link" href="#emailing-a-student">F.5. Emailing a student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2746,4 +2816,4 @@ Expected: Similar to previous</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 07:23:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 07:59:59 UTC</div></div></div></body></html>
