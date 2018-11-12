@@ -16,7 +16,7 @@
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-a-student-code-add-code">3.2. Adding a student: <code>add</code></a></li>
 <li><a href="#listing-all-students-code-list-code">3.3. Listing all students : <code>list</code></a></li>
-<li><a href="#emailing-a-student-code-email-code">3.4. Emailing a student : <code>email</code></a></li>
+<li><a href="#emailing-a-student-code-email-code">3.4. Emailing a student: <code>email</code></a></li>
 <li><a href="#editing-a-student-code-edit-code">3.5. Editing a student : <code>edit</code></a></li>
 <li><a href="#marking-attendance-code-attendance-code">3.6. Marking attendance: <code>attendance</code></a></li>
 <li><a href="#schedule-timetables-code-schedule-code">3.7. Schedule timetables: <code>schedule</code></a></li>
@@ -174,31 +174,36 @@ Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="emailing-a-student-code-email-code"><a class="link" href="#emailing-a-student-code-email-code">3.4. Emailing a student : <code>email</code></a></h3>
-<div class="literalblock">
+<h3 id="emailing-a-student-code-email-code"><a class="link" href="#emailing-a-student-code-email-code">3.4. Emailing a student: <code>email</code></a></h3>
+<div class="paragraph">
+<p>Allows the user to email a specific student.<br>
+Format: <code>email INDEX s/SUBJECT b/BODY</code></p>
+</div>
+<div class="sidebarblock">
 <div class="content">
-<pre>Allows the user to email a specified student. +
-Format: `email INDEX s/SUBJECT b/BODY`</pre>
+<div class="ulist">
+<ul>
+<li>
+<p>The subject of the email is specified after the s/ and the body after the b/.</p>
+</li>
+<li>
+<p>The user can specify one student index, after the <code>email</code> command word.</p>
+</li>
+<li>
+<p>The user will be redirected to an Outlook sign in page, and has to give consent to allow the application to send the mail on the user&#8217;s behalf.</p>
+</li>
+</ul>
 </div>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>****
-* The subject of the email is specified after the s/ and the body after the b/.
-* The user can specify only one student index, after the 'email' command word.
-****</pre>
 </div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Examples:</pre>
-</div>
+<div class="paragraph">
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>email 2 s/Attendance Problem b/Your attendance is poor. Is there a problem?</code><br>
-Gathers the email address of the student with index 2 for emailing, and sets the subject and body respectively.</p>
+This gathers the email address of the student at index 2, and sets the subject and body respectively. It then asks the user for permission to send the email on their behalf and once the user consents, it sends the email.</p>
 </li>
 </ul>
 </div>
@@ -917,4 +922,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 05:15:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 07:06:44 UTC</div></div></div></body></html>
