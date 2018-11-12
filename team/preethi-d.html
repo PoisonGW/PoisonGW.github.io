@@ -115,6 +115,112 @@ able to sign-in with his/her email and send an email to their student.</p>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="emailing-students-code-email-code"><a class="link" href="#emailing-students-code-email-code">Emailing students: <code>email</code></a></h3>
+<div class="paragraph">
+<p>Allows the user to email a specified student.<br>
+Format: <code>email i/INDEX s/SUBJECT b/BODY</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The subject of the email is specified after the s/ and the body after the b/.</p>
+</li>
+<li>
+<p>The user can specify only one student index, after the 'i/'.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>email i/2 s/Attendance Problem b/Your attendance is poor. Is there a problem?</code><br>
+Gathers the email address of the student with index 2 for emailing, and sets the subject and body respectively.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locating-students-by-name-tag-code-find-code"><a class="link" href="#locating-students-by-name-tag-code-find-code">Locating students by name/tag: <code>find</code></a></h3>
+<div class="paragraph">
+<p>Finds students whose names contain any of the given keywords.<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only the name is searched.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Students matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Finds students tagged with specified tag.<br>
+Format: <code>find t/TAG [MORE_TAGS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Tags are case sensitive</p>
+</li>
+<li>
+<p>The order of the tags does not matter</p>
+</li>
+<li>
+<p>Students matching at least one tag will be returned (i.e. <code>OR</code> search)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find John</code><br>
+Returns <code>john</code> and <code>John Doe</code></p>
+</li>
+<li>
+<p><code>find Betsy Tim John</code><br>
+Returns any student having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+<li>
+<p><code>find t/students</code><br>
+Returns students tagged with <code>t/students</code></p>
+</li>
+<li>
+<p><code>find t/students t/colleagues</code><br>
+Returns students tagged with <code>t/students</code> or <code>t/colleagues</code></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -187,4 +293,4 @@ The email command itself takes a few parameters:</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 21:01:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 04:42:26 UTC</div></div></div></body></html>

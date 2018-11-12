@@ -33,10 +33,9 @@
 <li><a href="#calendar-feature">3.2. Calendar feature</a></li>
 <li><a href="#attendance-feature">3.3. Attendance feature</a></li>
 <li><a href="#undo-redo-feature">3.4. Undo/Redo feature</a></li>
-<li><a href="#mark-feature">3.5. Mark feature</a></li>
-<li><a href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#group-feature">3.5. Group feature</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -996,12 +995,12 @@ storage of the other commands.To facilitate this command, a new data type is int
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>attendance</code> command may also be used with the <code>mark</code> command to update the attendance of multiple students at the same time. It is implemented as such:</p>
+<p>The <code>attendance</code> command may also be used with the <code>group</code> command to update the attendance of multiple students at the same time. It is implemented as such:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>attendance m/MARK_NAME at/ATTENDANCE</code></p>
+<p><code>attendance PREFIX_GROUP/groupName PREFIX_ATTENDANCE/attendance</code></p>
 </li>
 </ul>
 </div>
@@ -1017,7 +1016,7 @@ storage of the other commands.To facilitate this command, a new data type is int
 <p><code>attendance 1 at/0</code></p>
 </li>
 <li>
-<p><code>attendance m/tutorial1 at/1</code></p>
+<p><code>attendance g/tutorial1 at/1</code></p>
 </li>
 </ul>
 </div>
@@ -1309,22 +1308,27 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="mark-feature"><a class="link" href="#mark-feature">3.5. Mark feature</a></h3>
+<h3 id="group-feature"><a class="link" href="#group-feature">3.5. Group feature</a></h3>
 <div class="paragraph">
-<p>Marks allow tutors to manage groups of students easily without typing a command multiple times for each student in the class.
+<p>Groups allow tutors to manage groups of students easily without typing a command multiple times for each student in the class.
 It is designed to work well with the existing <code>Tag</code> system, and designed with commands such as <code>attendance</code> and <code>email</code> in mind.
 It is session based, meaning that groups are not stored in the data files after the app has closed, and is not intended as a replacement for <code>Tag</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.5.1. Implementation</a></h4>
 <div class="paragraph">
-<p><code>Mark</code> is a container class which stores a <code>Set&lt;Student&gt;</code> and exposes getter and setter methods, as well as methods for union and intersection of <code>Marks</code>.</p>
+<p><code>Group</code> is a container class which stores a <code>Set&lt;Student&gt;</code> and exposes getter and setter methods, as well as methods for union and intersection of <code>Groups</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GroupClassDiagram.png" alt="GroupClassDiagram">
+</div>
 </div>
 <div class="paragraph">
-<p>Marks are maintained by <code>ModelManager</code>, which is responsible for updating, storing and providing the correct <code>Mark</code> for commands.</p>
+<p>Groups are maintained by <code>ModelManager</code>, which is responsible for updating, storing and providing the correct <code>Group</code> for commands.</p>
 </div>
 <div class="paragraph">
-<p>Commands relating to the creation and manipulations of Marks are parsed by <code>MarkCommandParser</code>, which then returns the appropriate <code>MarkSubCommand</code> to be executed.
+<p>Commands relating to the creation and manipulations of Groups are parsed by <code>GroupCommandParser</code>, which then returns the appropriate <code>GroupSubCommand</code> to be executed.
 It is designed in this way to be easily extensible in the future as more sub-commands are added.</p>
 </div>
 <div class="paragraph">
@@ -1332,11 +1336,11 @@ It is designed in this way to be easily extensible in the future as more sub-com
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>mark [m/m1] &lt;subcommand&gt; [m/m2] [m/m3]`</pre>
+<pre>group [g/m1] &lt;subcommand&gt; &lt;arguments&gt;`</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The arguments <code>m/m1</code>, <code>m/m2</code>, <code>m/m3</code> may be optional in some cases and default to <code>Mark.DEFAULT_NAME</code></p>
+<p>The arguments <code>g/m1</code> may be optional in some cases and default to <code>Group.DEFAULT_NAME</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -1344,38 +1348,56 @@ It is designed in this way to be easily extensible in the future as more sub-com
 <div class="ulist">
 <ul>
 <li>
-<p><code>find [name|tag]</code>&#8201;&#8212;&#8201;marks Students matched by find command</p>
+<p><code>find name</code>&#8201;&#8212;&#8201;groups Students matched by name</p>
 </li>
 <li>
-<p><code>join m/m2 [m/m3]</code>&#8201;&#8212;&#8201;returns union of m2 and m3</p>
+<p><code>find t/tag&#8230;&#8203;</code>&#8201;&#8212;&#8201;groups Students matched by tags</p>
 </li>
 <li>
-<p><code>and m/m2 [m/m3]</code>&#8201;&#8212;&#8201;returns intersection of m2 and m3</p>
+<p><code>join g/m2 [g/m3]</code>&#8201;&#8212;&#8201;returns union of m2 and m3</p>
 </li>
 <li>
-<p><code>show</code>&#8201;&#8212;&#8201;shows marked Students in GUI</p>
+<p><code>and g/m2 [g/m3]</code>&#8201;&#8212;&#8201;returns intersection of m2 and m3</p>
+</li>
+<li>
+<p><code>show</code>&#8201;&#8212;&#8201;shows grouped Students in GUI</p>
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GroupCommandClassDiagram.png" alt="GroupCommandClassDiagram">
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="planned-sub-commands-1-4"><a class="link" href="#planned-sub-commands-1-4">3.5.3. Planned Sub-commands (1.4)</a></h4>
+<h4 id="planned-sub-commands-2-0"><a class="link" href="#planned-sub-commands-2-0">3.5.3. Planned Sub-commands (2.0)</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><code>tag [tagName]</code>&#8201;&#8212;&#8201;tags marked Students with tagName</p>
-</li>
-<li>
-<p><code>attd [0|1]</code>&#8201;&#8212;&#8201;marks attendance of marked Students</p>
-</li>
-<li>
-<p><code>email [emailText]</code>&#8201;&#8212;&#8201;sends email to marked Students</p>
+<p><code>index &lt;indexes&gt;</code>&#8201;&#8212;&#8201;groups students by index, separated by space, e.g. <code>group index 1 3 4 5</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="use-cases"><a class="link" href="#use-cases">3.5.4. Use Cases:</a></h4>
+<h4 id="parser-flowchart"><a class="link" href="#parser-flowchart">3.5.4. Parser Flowchart</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/GroupCommandParserFlowchart.png" alt="GroupCommandParserFlowchart">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="execution"><a class="link" href="#execution">3.5.5. Execution</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/GroupCommandSeqDiagram.png" alt="GroupCommandSeqDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="use-cases"><a class="link" href="#use-cases">3.5.6. Use Cases:</a></h4>
 <div class="paragraph">
 <p>Suppose a tutor wants to mark the attendance of all students from tutorial groups W13 and W14.</p>
 </div>
@@ -1401,10 +1423,10 @@ attendance 3 at/Present
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>mark m/a find t/W13` // adds students tagged with "W13" to mark m/a
-mark m/b find t/W14` // adds students tagged with "W14" to mark m/b
-mark m/res join m/a m/b` // merges students in m/a and m/b to mark m/res
-attendance m/res at/Present` // updates the marked students' attendance</pre>
+<pre>group g/a find t/W13` // adds students tagged with "W13" to group g/a
+group g/b find t/W14` // adds students tagged with "W14" to group g/b
+group g/res join g/a g/b` // merges students in g/a and g/b to group g/res
+attendance g/res at/Present` // updates the grouped students' attendance</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1413,30 +1435,103 @@ They can do that with a simple command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>email m/res b/[emailText]</pre>
+<pre>email g/res b/[emailText]</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.5. Design considerations</a></h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></h3>
+<h4 id="tracking-students"><a class="link" href="#tracking-students">3.5.7. Tracking students</a></h4>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>The application is implemented with immutable <code>Student</code> objects.
+As a result, when a student is edited, a new <code>Student</code> instance is created with the updated fields and stored in the <code>AddressBook</code>.
+This causes the stored <code>Student</code> objects in existing Groups to be outdated, and attempts to use those objects will lead to a crash.</p>
+</div>
+<div class="paragraph">
+<p>To solve this issue, after every command where student(s) are changed, the stored Groups will be updated as depicted in the activity diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UpdateStudentsActivityDiagram.png" alt="UpdateStudentsActivityDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.8. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-for-storing-students"><a class="link" href="#aspect-data-structure-for-storing-students">Aspect: Data structure for storing Students</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>HashSet (Current)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Built in duplicates prevention, easier implementation of methods, faster</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>ArrayList</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Order is preserved, able to convert to ObservableList easily</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ordering was not as important as duplicates prevention and the fact that many of the methods are designed for a Set.
+Efficiency is a nice bonus but not significant as the expected number of Student entries is well below the magnitude where the difference in speed is significant.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-command-format"><a class="link" href="#aspect-command-format">Aspect: Command format</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Separate sub Commands</p>
+<div class="ulist">
+<ul>
+<li>
+<p>separate commands into <code>group-find</code>, <code>group-show</code> etc.</p>
+</li>
+<li>
+<p>Pros: Easy parsing, easy to understand</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Single command (Current)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>single root command <code>group</code> with subcommands <code>group find</code>, <code>group show</code></p>
+</li>
+<li>
+<p>Pros: Usability, minimize code duplication</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1467,7 +1562,7 @@ They can do that with a simple command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2626,4 +2721,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 21:01:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 04:42:26 UTC</div></div></div></body></html>
